@@ -32,7 +32,7 @@ public class Shop : MonoBehaviour
 
     public void ClickOnCard()
     {
-        if (_weaponCards[WeaponIndex].)
+        _weaponCards[WeaponIndex].ChangeState();
     }
 
     private void SwitchScrollButtons(bool scrollRight)
