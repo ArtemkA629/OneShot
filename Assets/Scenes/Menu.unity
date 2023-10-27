@@ -644,7 +644,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 330665597}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 836427250}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &330665597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,7 +1254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &836427251
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1321,8 +1333,10 @@ MonoBehaviour:
   _weaponCards:
   - _weaponSprite: {fileID: 21300000, guid: 56b3d0cb6c2601643ac02836358aa8c3, type: 3}
     _cardText: "\u0412\u044B\u0431\u0440\u0430\u043D\u043E"
+    _price: 0
   - _weaponSprite: {fileID: 21300000, guid: 24436d721e271df459cddf64ca1ff0c7, type: 3}
     _cardText: 500
+    _price: 500
   _weaponImage: {fileID: 1821403063}
   _cardText: {fileID: 664999600}
   _rightButton: {fileID: 1620298067}
@@ -1339,6 +1353,7 @@ GameObject:
   - component: {fileID: 861129259}
   - component: {fileID: 861129258}
   - component: {fileID: 861129257}
+  - component: {fileID: 861129260}
   m_Layer: 5
   m_Name: Medium
   m_TagString: Untagged
@@ -1410,7 +1425,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 861129258}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 861129260}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &861129258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1449,6 +1476,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 861129255}
   m_CullTransparentMesh: 1
+--- !u!114 &861129260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 861129255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ffbf34798c0f04d9a3c608f4c8067c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelDifficulty: 1
 --- !u!1 &879166624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1916,6 +1956,7 @@ GameObject:
   - component: {fileID: 1193323105}
   - component: {fileID: 1193323104}
   - component: {fileID: 1193323103}
+  - component: {fileID: 1193323106}
   m_Layer: 5
   m_Name: Easy
   m_TagString: Untagged
@@ -1987,7 +2028,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1193323104}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1193323106}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1193323104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2026,6 +2079,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1193323101}
   m_CullTransparentMesh: 1
+--- !u!114 &1193323106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193323101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ffbf34798c0f04d9a3c608f4c8067c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelDifficulty: 0
 --- !u!1 &1257629839
 GameObject:
   m_ObjectHideFlags: 0
@@ -2105,6 +2171,7 @@ GameObject:
   - component: {fileID: 1377879715}
   - component: {fileID: 1377879717}
   - component: {fileID: 1377879716}
+  - component: {fileID: 1377879718}
   m_Layer: 5
   m_Name: WeaponCard
   m_TagString: Untagged
@@ -2172,6 +2239,62 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377879714}
   m_CullTransparentMesh: 1
+--- !u!114 &1377879718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377879714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1377879716}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 836427254}
+        m_TargetAssemblyTypeName: Shop, Assembly-CSharp
+        m_MethodName: ClickOnCard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1520946407
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,7 +2739,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1813343326}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 836427250}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1813343326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2916,6 +3051,7 @@ GameObject:
   - component: {fileID: 2000541733}
   - component: {fileID: 2000541732}
   - component: {fileID: 2000541731}
+  - component: {fileID: 2000541734}
   m_Layer: 5
   m_Name: Hard
   m_TagString: Untagged
@@ -2987,7 +3123,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2000541732}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2000541734}
+        m_TargetAssemblyTypeName: LevelButton, Assembly-CSharp
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2000541732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3026,6 +3174,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2000541729}
   m_CullTransparentMesh: 1
+--- !u!114 &2000541734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000541729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43ffbf34798c0f04d9a3c608f4c8067c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelDifficulty: 2
 --- !u!1 &2095858083
 GameObject:
   m_ObjectHideFlags: 0
