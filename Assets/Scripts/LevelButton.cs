@@ -7,7 +7,7 @@ public class LevelButton : MonoBehaviour
 
     public void Load()
     {
+        DontDestroyOnLoad(gameObject);
         SceneManager.LoadScene(1);
-        LevelDataHolder.LevelDifficulty = _levelDifficulty;
     }
 }

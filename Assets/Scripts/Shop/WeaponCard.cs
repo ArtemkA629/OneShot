@@ -6,7 +6,6 @@ public struct WeaponCard
 {
     [SerializeField] private Sprite _weaponSprite;
     [SerializeField] private string _cardText;
-    [SerializeField] private int _price;
 
     private bool _locked;
     private bool _chosen;
@@ -14,14 +13,14 @@ public struct WeaponCard
     public Sprite WeaponSprite => _weaponSprite;
     public string CardText => _cardText;
 
-    public static event Action Unchanged;
+    public static event Action<Sprite> Unchanged;
 
     public void ChangeState(int moneyCount)
     {
         if (_locked)
             if (_chosen)
                 throw new Exception("Weaponcard can't be locked and chosen!");
-            else if (moneyCount > _price)
+            else if (int.TryParse(_cardText, out int result) && moneyCount > result)
             {
                 _locked = false;
                 ApplyChange("Выбрано", false);
@@ -45,7 +44,7 @@ public struct WeaponCard
     private void ApplyChange(string text, bool chosen)
     {
         if (!chosen)
-            Unchanged?.Invoke();
+            Unchanged?.Invoke(_weaponSprite);
 
         _cardText = text;
         _chosen = chosen;

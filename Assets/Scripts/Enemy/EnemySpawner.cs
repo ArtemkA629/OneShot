@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -13,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        _spawnDelay = _spawnDelays[(int)LevelDataHolder.LevelDifficulty];
+        _spawnDelay = _spawnDelays[(int)GlobalDataHolder.LevelDifficulty];
 
         SpawnEnemy();
     }

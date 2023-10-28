@@ -15,7 +15,8 @@ public class Shop : MonoBehaviour
 
     private int _currentWeaponIndex;
     private int _chosenWeaponIndex;
-    private int _moneyCount;
+
+    private static int _moneyCount;
 
     public int CurrentWeaponIndex 
     {
@@ -23,9 +24,14 @@ public class Shop : MonoBehaviour
         set { _currentWeaponIndex = Mathf.Clamp(value, 0, _weaponCards.Length - 1); } 
     }
 
-    private void Start()
+    private void OnEnable()
     {
         WeaponCard.Unchanged += OnUnchanged;
+    }
+
+    private void OnDisable()
+    {
+        WeaponCard.Unchanged -= OnUnchanged;
     }
 
     public void Scroll(bool scrollRight)
@@ -60,7 +66,7 @@ public class Shop : MonoBehaviour
             _rightButton.SetActive(!scrollRight);
     }
 
-    private void OnUnchanged()
+    private void OnUnchanged(Sprite weaponSprite)
     {
         _weaponCards[_chosenWeaponIndex].Unchange();
         _chosenWeaponIndex = _currentWeaponIndex;
