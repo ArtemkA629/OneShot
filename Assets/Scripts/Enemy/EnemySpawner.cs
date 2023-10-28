@@ -4,15 +4,15 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private Damageable _enemy;
     [SerializeField] private float _spawnRange;
-    [SerializeField] private float _spawnDelay;
 
     private float _timer = 0f;
-
-    public static float[] _spawnDelays = { 5f, 3f, 1.5f };
+    private float _spawnDelay;
+    private float[] _spawnDelays = { 5f, 3f, 1.5f };
 
     private void Start()
     {
-        _spawnDelay = _spawnDelays[(int)GlobalDataHolder.LevelDifficulty];
+        var levelDifficulty = FindObjectOfType<LevelButton>().LevelDifficulty;
+        _spawnDelay = _spawnDelays[(int)levelDifficulty];
 
         SpawnEnemy();
     }
