@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        var levelDifficulty = FindObjectOfType<LevelButton>().LevelDifficulty;
+        var levelDifficulty = GameDataHolder.LevelDifficulty;
         _spawnDelay = _spawnDelays[(int)levelDifficulty];
 
         SpawnEnemy();
