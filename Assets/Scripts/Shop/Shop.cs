@@ -13,10 +13,9 @@ public class Shop : MonoBehaviour
     [SerializeField] private GameObject _rightButton;
     [SerializeField] private GameObject _leftButton;
 
+    private Coins _coins;
     private int _currentWeaponIndex;
     private int _chosenWeaponIndex;
-
-    private static int _moneyCount;
 
     public int CurrentWeaponIndex 
     {
@@ -41,7 +40,7 @@ public class Shop : MonoBehaviour
         else
             CurrentWeaponIndex--;
         
-        _weaponImage.sprite = _weaponCards[CurrentWeaponIndex].WeaponSprite;
+        _weaponImage.sprite = _weaponCards[CurrentWeaponIndex].Sprite;
         _cardText.text = _weaponCards[CurrentWeaponIndex].CardText;
 
         SwitchScrollButtons(scrollRight);
@@ -49,7 +48,7 @@ public class Shop : MonoBehaviour
 
     public void ClickOnCard()
     {
-        _weaponCards[CurrentWeaponIndex].ChangeState(_moneyCount);
+        _weaponCards[CurrentWeaponIndex].ChangeState(_coins.Amount);
     }
 
     private void SwitchScrollButtons(bool scrollRight)
@@ -59,14 +58,17 @@ public class Shop : MonoBehaviour
         float lastIndex = _weaponCards.Length - 1;
         float prelastIndex = _weaponCards.Length - 2;
 
-        if (CurrentWeaponIndex == firstIndex || CurrentWeaponIndex == secondIndex)
+        bool canSwitchLeftButton = CurrentWeaponIndex == firstIndex || CurrentWeaponIndex == secondIndex;
+        bool canSwitchRightButton = CurrentWeaponIndex == lastIndex || CurrentWeaponIndex == prelastIndex;
+
+        if (canSwitchLeftButton)
             _leftButton.SetActive(scrollRight);
 
-        if (CurrentWeaponIndex == lastIndex || CurrentWeaponIndex == prelastIndex)
+        else if (canSwitchRightButton)
             _rightButton.SetActive(!scrollRight);
     }
 
-    private void OnUnchanged(Sprite weaponSprite)
+    private void OnUnchanged(GameObject weaponModel)
     {
         _weaponCards[_chosenWeaponIndex].Unchange();
         _chosenWeaponIndex = _currentWeaponIndex;

@@ -1,30 +1,26 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public static class GameDataHolder
+public class GlobalDataHolder : MonoBehaviour
 {
-    [SerializeField] private Dictionary<Sprite, GameObject> _weapons;
-
-    public static GameObject CurrentModel { get; private set; }
     public static LevelDifficulty LevelDifficulty { get; private set; }
-
-    public static SetLevel(LevelDifficulty levelDifficulty)
-    {
-        LevelDifficulty = levelDifficulty;
-    }
+    public static GameObject WeaponModel { get; private set; }
 
     private void OnEnable()
     {
+        LevelButton.LevelChosen += OnLevelChosen;
         WeaponCard.Unchanged += OnUnchanged;
+        
     }
 
-    private void OnDisable()
+    private void OnLevelChosen(LevelDifficulty levelDifficulty)
     {
+        LevelDifficulty = levelDifficulty;
+        LevelButton.LevelChosen -= OnLevelChosen;
+    }
+
+    private void OnUnchanged(GameObject weaponModel)
+    {
+        WeaponModel = weaponModel;
         WeaponCard.Unchanged -= OnUnchanged;
-    }
-
-    private void OnUnchanged(Sprite weaponSprite)
-    {
-        CurrentModel = _weapons[weaponSprite];
     }
 }

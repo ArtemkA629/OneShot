@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void Start()
     {
-        var levelDifficulty = GameDataHolder.LevelDifficulty;
+        var levelDifficulty = GlobalDataHolder.LevelDifficulty;
         _spawnDelay = _spawnDelays[(int)levelDifficulty];
 
         SpawnEnemy();

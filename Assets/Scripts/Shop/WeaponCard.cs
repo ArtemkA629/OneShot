@@ -4,16 +4,17 @@ using UnityEngine;
 [Serializable]
 public struct WeaponCard
 {
-    [SerializeField] private Sprite _weaponSprite;
+    [SerializeField] private Sprite _sprite;
+    [SerializeField] private GameObject _model;
     [SerializeField] private string _cardText;
 
     private bool _locked;
     private bool _chosen;
 
-    public Sprite WeaponSprite => _weaponSprite;
+    public Sprite Sprite => _sprite;
     public string CardText => _cardText;
 
-    public static event Action<Sprite> Unchanged;
+    public static event Action<GameObject> Unchanged;
 
     public void ChangeState(int moneyCount)
     {
@@ -44,7 +45,7 @@ public struct WeaponCard
     private void ApplyChange(string text, bool chosen)
     {
         if (!chosen)
-            Unchanged?.Invoke(_weaponSprite);
+            Unchanged?.Invoke(_model);
 
         _cardText = text;
         _chosen = chosen;

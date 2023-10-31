@@ -49,7 +49,7 @@ public class RaycastAttack : AttackBehaviour
         {
             var hitCollider = hitInfo.collider;
 
-            if (hitCollider.TryGetComponent(out IDamageable damageable))
+            if (hitCollider.TryGetComponent(out Damageable damageable))
             {
                 damageable.ApplyDamage(_damage);
                 Debug.Log("Hit");

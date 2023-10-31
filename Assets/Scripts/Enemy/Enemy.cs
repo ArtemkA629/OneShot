@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy : Damageable
 {
     [SerializeField] private Collider[] _enemyColliders;
+
     private Animator _animator;
 
     private void Start()

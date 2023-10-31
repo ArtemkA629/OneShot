@@ -62,7 +62,7 @@ public class OverlapAttack : AttackBehaviour
     {
         for (int i = 0; i < _overlapResultsCount; i++)
         {
-            if (_overlapResults[i].TryGetComponent(out IDamageable damageable) == false)
+            if (_overlapResults[i].TryGetComponent(out Damageable damageable) == false)
                 continue;
 
             if (_considerObstacles)
