@@ -13,7 +13,10 @@ public class Shop : MonoBehaviour
     [SerializeField] private GameObject _rightButton;
     [SerializeField] private GameObject _leftButton;
 
-    private Coins _coins;
+    [Header("Money")]
+    [SerializeField] private TextMeshProUGUI _coinsText;
+
+    private Coins _coins = new Coins();
     private int _currentWeaponIndex;
     private int _chosenWeaponIndex;
 
@@ -25,12 +28,20 @@ public class Shop : MonoBehaviour
 
     private void OnEnable()
     {
-        WeaponCard.Unchanged += OnUnchanged;
+        WeaponCard.Unchanged += OnWeaponCardUnchanged;
+        _coins.Changed += OnCoinsAmountChanged;
+    }
+
+    private void Start()
+    {
+        _coins.Change(GlobalDataHolder.CoinsToAdd);
+        GlobalDataHolder.ResetCoinsAmount();
     }
 
     private void OnDisable()
     {
-        WeaponCard.Unchanged -= OnUnchanged;
+        WeaponCard.Unchanged -= OnWeaponCardUnchanged;
+        _coins.Changed -= OnCoinsAmountChanged;
     }
 
     public void Scroll(bool scrollRight)
@@ -68,9 +79,14 @@ public class Shop : MonoBehaviour
             _rightButton.SetActive(!scrollRight);
     }
 
-    private void OnUnchanged(GameObject weaponModel)
+    private void OnWeaponCardUnchanged(GameObject weaponModel)
     {
         _weaponCards[_chosenWeaponIndex].Unchange();
         _chosenWeaponIndex = _currentWeaponIndex;
+    }
+
+    private void OnCoinsAmountChanged()
+    {
+        _coinsText.text =_coins.Amount.ToString();
     }
 }
