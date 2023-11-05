@@ -64,10 +64,10 @@ public class Shop : MonoBehaviour
 
     private void SwitchScrollButtons(bool scrollRight)
     {
-        float firstIndex = 0;
-        float secondIndex = 1;
-        float lastIndex = _weaponCards.Length - 1;
-        float prelastIndex = _weaponCards.Length - 2;
+        int firstIndex = 0;
+        int secondIndex = 1;
+        int lastIndex = _weaponCards.Length - 1;
+        int prelastIndex = _weaponCards.Length - 2;
 
         bool canSwitchLeftButton = CurrentWeaponIndex == firstIndex || CurrentWeaponIndex == secondIndex;
         bool canSwitchRightButton = CurrentWeaponIndex == lastIndex || CurrentWeaponIndex == prelastIndex;
@@ -75,12 +75,14 @@ public class Shop : MonoBehaviour
         if (canSwitchLeftButton)
             _leftButton.SetActive(scrollRight);
 
-        else if (canSwitchRightButton)
+        if (canSwitchRightButton)
             _rightButton.SetActive(!scrollRight);
     }
 
     private void OnWeaponCardUnchanged(GameObject weaponModel)
     {
+        _cardText.text = _weaponCards[CurrentWeaponIndex].CardText;
+
         _weaponCards[_chosenWeaponIndex].Unchange();
         _chosenWeaponIndex = _currentWeaponIndex;
     }

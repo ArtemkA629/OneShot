@@ -2,9 +2,15 @@ using UnityEngine;
 
 public class GlobalDataHolder : MonoBehaviour
 {
+    [SerializeField] private GameObject _weaponModelAtStart;
+
     public static LevelDifficulty LevelDifficulty { get; private set; }
     public static GameObject WeaponModel { get; private set; }
-    public static int CoinsToAdd { get; private set; }
+    public static int CoinsToAdd 
+    {
+        get => CoinsToAdd;
+        set => CoinsToAdd = Mathf.Clamp(value, 0, int.MaxValue);
+    }
 
     public static void ResetCoinsAmount()
     {
@@ -16,6 +22,8 @@ public class GlobalDataHolder : MonoBehaviour
         LevelButton.LevelChosen += OnLevelChosen;
         WeaponCard.Unchanged += OnUnchanged;
         Enemy.CoinsAmountChanging += OnCoinsAmountChanging;
+
+        WeaponModel = _weaponModelAtStart;
 
         DontDestroyOnLoad(gameObject);
     }

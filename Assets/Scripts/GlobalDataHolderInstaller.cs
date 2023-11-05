@@ -1,18 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
-public class GlobalDataHolderInstaller : MonoBehaviour
+public class GlobalDataHolderInstaller : MonoInstaller
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private GlobalDataHolder _globalDataHolderUnit;
 
-    // Update is called once per frame
-    void Update()
+    public override void InstallBindings()
     {
-        
+        DontDestroyOnLoad(Instantiate(_globalDataHolderUnit));
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Coins : MonoBehaviour
+public class Coins
 {
     private int _amount;
 

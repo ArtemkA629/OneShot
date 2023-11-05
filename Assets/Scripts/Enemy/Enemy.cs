@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : Damageable
 {
     [SerializeField] private Collider[] _enemyColliders;
+    [SerializeField] private float _deathDelay = 4f;
 
     private Animator _animator;
 
@@ -20,6 +21,7 @@ public class Enemy : Damageable
 
         foreach (var collider in _enemyColliders)
             collider.enabled = false;
+        Destroy(gameObject, _deathDelay);
 
         int amount = 1;
         CoinsAmountChanging?.Invoke(amount);

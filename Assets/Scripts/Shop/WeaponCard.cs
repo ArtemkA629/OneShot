@@ -2,14 +2,11 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public struct WeaponCard
+public class WeaponCard
 {
     [SerializeField] private Sprite _sprite;
     [SerializeField] private GameObject _model;
     [SerializeField] private string _cardText;
-
-    private bool _locked;
-    private bool _chosen;
 
     public Sprite Sprite => _sprite;
     public string CardText => _cardText;
@@ -18,36 +15,48 @@ public struct WeaponCard
 
     public void ChangeState(int moneyCount)
     {
-        if (_locked)
-            if (_chosen)
+        if (Locked())
+        {
+            if (Chosen())
                 throw new Exception("Weaponcard can't be locked and chosen!");
-            else if (int.TryParse(_cardText, out int result) && moneyCount > result)
+            else if (moneyCount >= int.Parse(_cardText))
             {
-                _locked = false;
-                ApplyChange("Выбрано", false);
-
+                ApplyChange("Выбрано");
                 return;
             }
+        }
 
-        else if (!_chosen)
-            ApplyChange("Выбрано", false);
+        else if (!Chosen())
+        {
+            ApplyChange("Выбрано");
+            Debug.Log("edf");
+        }
     }
 
     public void Unchange()
     {
-        if (_locked)
+        if (Locked())
             throw new Exception("Weaponcard can't be locked!");
 
-        else if (_chosen)
-            ApplyChange("Не выбрано", true);
+        else if (Chosen())
+            ApplyChange("Не выбрано");
     }
 
-    private void ApplyChange(string text, bool chosen)
+    private void ApplyChange(string text)
     {
-        if (!chosen)
-            Unchanged?.Invoke(_model);
-
         _cardText = text;
-        _chosen = chosen;
+
+        if (Chosen())
+            Unchanged?.Invoke(_model);
+    }
+
+    private bool Locked()
+    {
+        return int.TryParse(_cardText, out int result);
+    }
+
+    private bool Chosen()
+    {
+        return _cardText == "Выбрано";
     }
 }
