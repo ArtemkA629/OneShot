@@ -10,12 +10,14 @@ public class Coins
     public int Amount
     {
         get => _amount;
-        set => _amount = Mathf.Clamp(value, 0, int.MaxValue);
+        private set => _amount = Mathf.Clamp(value, 0, int.MaxValue);
     }
 
     public void Change(int count)
     {
         Amount += count;
+        Debug.Log(count);
+        Debug.Log(Amount);
         Changed?.Invoke();
     }
 }

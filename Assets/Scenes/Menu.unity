@@ -1338,7 +1338,7 @@ MonoBehaviour:
   - _sprite: {fileID: 21300000, guid: 24436d721e271df459cddf64ca1ff0c7, type: 3}
     _model: {fileID: 4489477920470386682, guid: c507afc317cc9b9499a4b601798611c6,
       type: 3}
-    _cardText: 0
+    _cardText: 1
   _weaponImage: {fileID: 1821403063}
   _cardText: {fileID: 664999600}
   _rightButton: {fileID: 1620298067}

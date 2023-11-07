@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GlobalDataHolder : MonoBehaviour
@@ -6,11 +7,7 @@ public class GlobalDataHolder : MonoBehaviour
 
     public static LevelDifficulty LevelDifficulty { get; private set; }
     public static GameObject WeaponModel { get; private set; }
-    public static int CoinsToAdd 
-    {
-        get => CoinsToAdd;
-        set => CoinsToAdd = Mathf.Clamp(value, 0, int.MaxValue);
-    }
+    public static int CoinsToAdd { get; private set; }
 
     public static void ResetCoinsAmount()
     {
@@ -47,6 +44,9 @@ public class GlobalDataHolder : MonoBehaviour
 
     private static void OnCoinsAmountChanging(int amount)
     {
+        if (CoinsToAdd + amount < 0)
+            throw new Exception("CoinsToAdd can't be less 0");
+
         CoinsToAdd += amount;
     }
 }

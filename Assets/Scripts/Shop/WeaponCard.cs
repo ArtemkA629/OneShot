@@ -12,16 +12,20 @@ public class WeaponCard
     public string CardText => _cardText;
 
     public static event Action<GameObject> Unchanged;
+    public static event Action<int> Bought;
 
     public void ChangeState(int moneyCount)
     {
         if (Locked())
         {
+            int coinsToSubtract = int.Parse(_cardText);
+
             if (Chosen())
                 throw new Exception("Weaponcard can't be locked and chosen!");
-            else if (moneyCount >= int.Parse(_cardText))
+            else if (moneyCount >= coinsToSubtract)
             {
                 ApplyChange("Выбрано");
+                Bought?.Invoke(coinsToSubtract);
                 return;
             }
         }

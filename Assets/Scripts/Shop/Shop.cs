@@ -5,9 +5,10 @@ using TMPro;
 public class Shop : MonoBehaviour
 {
     [Header("WeaponCard")]
-    [SerializeField] private WeaponCard[] _weaponCards;
     [SerializeField] private Image _weaponImage;
     [SerializeField] private TextMeshProUGUI _cardText;
+
+    [SerializeField] static private WeaponCard[] _weaponCards;
 
     [Header("Buttons")]
     [SerializeField] private GameObject _rightButton;
@@ -29,6 +30,7 @@ public class Shop : MonoBehaviour
     private void OnEnable()
     {
         WeaponCard.Unchanged += OnWeaponCardUnchanged;
+        WeaponCard.Bought += OnWeaponBought;
         _coins.Changed += OnCoinsAmountChanged;
     }
 
@@ -41,6 +43,7 @@ public class Shop : MonoBehaviour
     private void OnDisable()
     {
         WeaponCard.Unchanged -= OnWeaponCardUnchanged;
+        WeaponCard.Bought -= OnWeaponBought;
         _coins.Changed -= OnCoinsAmountChanged;
     }
 
@@ -85,6 +88,11 @@ public class Shop : MonoBehaviour
 
         _weaponCards[_chosenWeaponIndex].Unchange();
         _chosenWeaponIndex = _currentWeaponIndex;
+    }
+
+    private void OnWeaponBought(int coinsToSubtract)
+    {
+        _coins.Change(-coinsToSubtract);
     }
 
     private void OnCoinsAmountChanged()
