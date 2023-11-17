@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 using UnityEngine.AI;
 
 public class AnimateWalk : StateMachineBehaviour
@@ -12,6 +12,8 @@ public class AnimateWalk : StateMachineBehaviour
     {
         _navMeshAgent = animator.GetComponent<NavMeshAgent>();
         _playerTransform = FindObjectOfType<PlayerMovement>().transform;
+
+        _navMeshAgent.enabled = true;
     }
 
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -25,6 +27,6 @@ public class AnimateWalk : StateMachineBehaviour
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        _navMeshAgent.SetDestination(_navMeshAgent.transform.position);
+        _navMeshAgent.enabled = false;
     }
 }

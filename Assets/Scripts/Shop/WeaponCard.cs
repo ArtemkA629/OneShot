@@ -4,15 +4,24 @@ using UnityEngine;
 [Serializable]
 public class WeaponCard
 {
-    [SerializeField] private Sprite _sprite;
-    [SerializeField] private GameObject _model;
-    [SerializeField] private string _cardText;
+    private Sprite _sprite;
+    private GameObject _model;
+    private string _cardText;
 
     public Sprite Sprite => _sprite;
     public string CardText => _cardText;
 
     public static event Action<GameObject> Unchanged;
     public static event Action<int> Bought;
+
+    public WeaponCard() { }
+
+    public WeaponCard(WeaponItem weaponItem)
+    {
+        _sprite = weaponItem.Sprite;
+        _model = weaponItem.Model;
+        _cardText = weaponItem.CardTextAtStart;
+    }
 
     public void ChangeState(int moneyCount)
     {

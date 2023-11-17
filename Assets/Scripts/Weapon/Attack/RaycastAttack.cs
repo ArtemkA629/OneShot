@@ -27,7 +27,10 @@ public class RaycastAttack : AttackBehaviour
 
     private void Start()
     {
+        var weaponModel = FindObjectOfType<WeaponModel>();
+
         _shakeCameraOnWeaponAttack = GetComponentInParent<IWeaponAttackReaction>();
+        _muzzleEffect = weaponModel.MuzzleEffect;
     }
 
     public override void PerformAttack()
@@ -50,10 +53,7 @@ public class RaycastAttack : AttackBehaviour
             var hitCollider = hitInfo.collider;
 
             if (hitCollider.TryGetComponent(out Damageable damageable))
-            {
                 damageable.ApplyDamage(_damage);
-                Debug.Log("Hit");
-            }
 
             SpawnParicleEffectsOnHit(hitInfo);
         }

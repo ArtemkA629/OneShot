@@ -92,6 +92,7 @@
     <Compile Include="Assets\Scripts\Player\Player.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Demo\Assets\CFX_Demo_RandomDir.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Spawn System\CFX_SpawnSystem.cs" />
+    <Compile Include="Assets\Scripts\CoinAddingView.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Animation\PlaySoundBehaviour.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\PlayParticles.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Tools\Looping\LoopUtilities.cs" />
@@ -106,8 +107,10 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Animation\PlaySoundCharacterBehaviour.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Services\GameModeService.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Tools\Log.cs" />
+    <Compile Include="Assets\Scripts\Camera\LerpToRegularPosition.cs" />
     <Compile Include="Assets\Scripts\Shop\WeaponCard.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\TargetScript.cs" />
+    <Compile Include="Assets\Scripts\Weapon\WeaponModel.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Animation\WeaponAnimationEventHandler.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Camera\CameraLook.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponModelChanger.cs" />
@@ -128,7 +131,6 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Weapons\UtilitiesWeapons.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Animation\AnimationReceiver.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Scripts\CFX_LightIntensityFade.cs" />
-    <Compile Include="Assets\Scripts\GlobalDataHolderInstaller.cs" />
     <Compile Include="Assets\Scripts\Weapon\Aiming\WeaponAiming.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\Element.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponAnimatorConstStrings.cs" />
@@ -140,6 +142,7 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\ProjectileScript.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\CasingScript.cs" />
     <Compile Include="Assets\Scripts\Damageable.cs" />
+    <Compile Include="Assets\Scripts\MonoInstallers\GlobalDataHolderInstaller.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\CanvasSpawner.cs" />
     <Compile Include="Assets\Scripts\GameOver.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IWeaponAttackReaction.cs" />
@@ -157,6 +160,7 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Weapons\WeaponAttachmentManager.cs" />
     <Compile Include="Assets\Scripts\Weapon\Aiming\InvokeAimingByInput.cs" />
     <Compile Include="Assets\Scripts\Camera\RotateCameraByInput.cs" />
+    <Compile Include="Assets\Scripts\Weapon\WeaponItem.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Scripts\WFX_LightFlicker.cs" />
     <Compile Include="Assets\Scripts\Enemy\AnimateWalk.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
