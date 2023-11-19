@@ -135,7 +135,6 @@
     <Compile Include="Assets\Scripts\Weapon\WeaponAnimatorConstStrings.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Tools\Looping\Loops.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\TextTimescale.cs" />
-    <Compile Include="Assets\Scripts\Weapon\Attack\AttackAnimator.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\TextAmmunitionCurrent.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Services\ServiceLocator.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\ProjectileScript.cs" />

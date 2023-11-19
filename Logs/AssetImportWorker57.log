@@ -1,0 +1,80 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.4f1 (35713cd46cd7) revision 3502396'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.17134) 64bit ProfessionalWorkstation' Language: 'ru' Physical Memory: 3275 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+E:\2022.3.4f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker57
+-projectPath
+C:/Users/User/Documents/GitHub/OneShot
+-logFile
+Logs/AssetImportWorker57.log
+-srvPort
+49978
+Successfully changed project path to: C:/Users/User/Documents/GitHub/OneShot
+C:/Users/User/Documents/GitHub/OneShot
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [7328] Host "[IP] 192.168.1.66 [Port] 0 [Flags] 2 [Guid] 4206049546 [EditorId] 4206049546 [Version] 1048832 [Id] WindowsEditor(7,my_desktop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [7328] Host "[IP] 192.168.1.66 [Port] 0 [Flags] 2 [Guid] 4206049546 [EditorId] 4206049546 [Version] 1048832 [Id] WindowsEditor(7,my_desktop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+received signal from system: SIGSEGV
+Obtained 22 stack frames
+0x00007ff6b99b3a2d (Unity) 
+0x00007ff6b99b89d9 (Unity) 
+0x00007ff6ba9840e1 ((<unknown>)) 
+0x00007ff6b99b7e26 ((<unknown>)) 
+0x00007ff6b99b325c ((<unknown>)) 
+0x00007ff6bbdccff8 ((<unknown>)) 
+0x00007ff6bbe90938 ((<unknown>)) 
+0x00007ff6bbd96990 ((<unknown>)) 
+0x00007ffa8788f7fd (ntdll) _chkstk
+0x00007ffa877fd856 (ntdll) RtlWalkFrameChain
+0x00007ffa8788e72e (ntdll) KiUserExceptionDispatcher
+0x00007ff6b91dc3b0 ((<unknown>)) 
+0x00007ff6b91c4c6a ((<unknown>)) 
+0x00007ff6b91c5521 ((<unknown>)) 
+0x00007ff6b91cf60e ((<unknown>)) 
+0x00007ff6baf4fab1 ((<unknown>)) 
+0x00007ff6b95420ce ((<unknown>)) 
+0x00007ff6ba5091f5 ((<unknown>)) 
+0x00007ff6ba98f525 ((<unknown>)) 
+0x00007ff6bbd742fe ((<unknown>)) 
+0x00007ffa86f14034 ((<unknown>)) 
+0x00007ffa87863691 ((<unknown>)) 
+

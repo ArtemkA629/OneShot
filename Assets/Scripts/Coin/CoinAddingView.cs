@@ -3,11 +3,16 @@ using UnityEngine.UI;
 
 public class CoinAddingView : MonoBehaviour
 {
-    [SerializeField] private Image _coinImage;
     [SerializeField] private float _crossFadeAlphaDuration;
     [SerializeField] private float _positionLerpSpeed;
 
+    private Image _coinImage;
     private Vector3 _finalPosition;
+
+    private void Start()
+    {
+        _coinImage = GetComponent<Image>();
+    }
 
     public void Init(Vector3 enemyPosition)
     {

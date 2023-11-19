@@ -1,0 +1,164 @@
+Using pre-set license
+Built from '2022.3/staging' branch; Version is '2022.3.4f1 (35713cd46cd7) revision 3502396'; Using compiler version '192829333'; Build Type 'Release'
+OS: 'Windows 10  (10.0.17134) 64bit ProfessionalWorkstation' Language: 'ru' Physical Memory: 3275 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 1
+
+COMMAND LINE ARGUMENTS:
+E:\2022.3.4f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker7
+-projectPath
+C:/Users/User/Documents/GitHub/OneShot
+-logFile
+Logs/AssetImportWorker7.log
+-srvPort
+49978
+Successfully changed project path to: C:/Users/User/Documents/GitHub/OneShot
+C:/Users/User/Documents/GitHub/OneShot
+[UnityMemory] Configuration Parameters - Can be set up in boot.config
+    "memorysetup-bucket-allocator-granularity=16"
+    "memorysetup-bucket-allocator-bucket-count=8"
+    "memorysetup-bucket-allocator-block-size=33554432"
+    "memorysetup-bucket-allocator-block-count=8"
+    "memorysetup-main-allocator-block-size=16777216"
+    "memorysetup-thread-allocator-block-size=16777216"
+    "memorysetup-gfx-main-allocator-block-size=16777216"
+    "memorysetup-gfx-thread-allocator-block-size=16777216"
+    "memorysetup-cache-allocator-block-size=4194304"
+    "memorysetup-typetree-allocator-block-size=2097152"
+    "memorysetup-profiler-bucket-allocator-granularity=16"
+    "memorysetup-profiler-bucket-allocator-bucket-count=8"
+    "memorysetup-profiler-bucket-allocator-block-size=33554432"
+    "memorysetup-profiler-bucket-allocator-block-count=8"
+    "memorysetup-profiler-allocator-block-size=16777216"
+    "memorysetup-profiler-editor-allocator-block-size=1048576"
+    "memorysetup-temp-allocator-size-main=16777216"
+    "memorysetup-job-temp-allocator-block-size=2097152"
+    "memorysetup-job-temp-allocator-block-size-background=1048576"
+    "memorysetup-job-temp-allocator-reduction-small-platforms=262144"
+    "memorysetup-allocator-temp-initial-block-size-main=262144"
+    "memorysetup-allocator-temp-initial-block-size-worker=262144"
+    "memorysetup-temp-allocator-size-background-worker=32768"
+    "memorysetup-temp-allocator-size-job-worker=262144"
+    "memorysetup-temp-allocator-size-preload-manager=33554432"
+    "memorysetup-temp-allocator-size-nav-mesh-worker=65536"
+    "memorysetup-temp-allocator-size-audio-worker=65536"
+    "memorysetup-temp-allocator-size-cloud-worker=32768"
+    "memorysetup-temp-allocator-size-gi-baking-worker=262144"
+    "memorysetup-temp-allocator-size-gfx=262144"
+Player connection [6360] Host "[IP] 192.168.1.66 [Port] 0 [Flags] 2 [Guid] 1277881973 [EditorId] 1277881973 [Version] 1048832 [Id] WindowsEditor(7,my_desktop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined multi-casting on [225.0.0.222:54997]...
+
+Player connection [6360] Host "[IP] 192.168.1.66 [Port] 0 [Flags] 2 [Guid] 1277881973 [EditorId] 1277881973 [Version] 1048832 [Id] WindowsEditor(7,my_desktop) [Debug] 1 [PackageName] WindowsEditor [ProjectName] Editor" joined alternative multi-casting on [225.0.0.222:34997]...
+
+Refreshing native plugins compatible for Editor in 81.97 ms, found 3 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2022.3.4f1 (35713cd46cd7)
+[Subsystems] Discovering subsystems at path E:/2022.3.4f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/Users/User/Documents/GitHub/OneShot/Assets
+GfxDevice: creating device client; threaded=0; jobified=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: AMD Radeon HD 7540D (ID=0x9991)
+    Vendor:   ATI
+    VRAM:     740 MB
+    Driver:   15.301.1901.0
+Shader 'WFX/Transparent Diffuse': fallback shader 'Particles/Alpha Blended' not found
+Shader 'WFX/Transparent Specular': fallback shader 'Particles/Alpha Blended' not found
+Initialize mono
+Mono path[0] = 'E:/2022.3.4f1/Editor/Data/Managed'
+Mono path[1] = 'E:/2022.3.4f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit-win32'
+Mono config path = 'E:/2022.3.4f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56348
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: E:/2022.3.4f1/Editor/Data/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
+Register platform support module: E:/2022.3.4f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.018650 seconds.
+- Loaded All Assemblies, in  1.777 seconds
+Native extension for WindowsStandalone target not found
+Native extension for WebGL target not found
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.755 seconds
+Domain Reload Profiling: 3532ms
+	BeginReloadAssembly (625ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (0ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (3ms)
+	RebuildCommonClasses (202ms)
+	RebuildNativeTypeToScriptingClass (46ms)
+	initialDomainReloadingComplete (254ms)
+	LoadAllAssembliesAndSetupDomain (649ms)
+		LoadAssemblies (622ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (637ms)
+			TypeCache.Refresh (635ms)
+				TypeCache.ScanAssembly (591ms)
+			ScanForSourceGeneratedMonoScriptInfo (1ms)
+			ResolveRequiredComponents (2ms)
+	FinalizeReload (1757ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (1204ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (42ms)
+			SetLoadedEditorAssemblies (20ms)
+			RefreshPlugins (0ms)
+			BeforeProcessingInitializeOnLoad (14ms)
+			ProcessInitializeOnLoadAttributes (734ms)
+			ProcessInitializeOnLoadMethodAttributes (393ms)
+			AfterProcessingInitializeOnLoad (0ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (0ms)
+========================================================================
+Worker process is ready to serve import requests
+
+=================================================================
+	Native Crash Reporting
+=================================================================
+Got a UNKNOWN while executing native code. This usually indicates
+a fatal error in the mono runtime or one of the native libraries 
+used by your application.
+=================================================================
+
+=================================================================
+	Managed Stacktrace:
+=================================================================
+=================================================================
+Received signal SIGSEGV
+Obtained 29 stack frames
+0x00007ff6b91c4e08 (Unity) DynamicHeapAllocator::Allocate
+0x00007ff6b91d2dac (Unity) DualThreadAllocator<DynamicHeapAllocator>::Allocate
+0x00007ff6b91c5521 (Unity) MemoryManager::Allocate
+0x00007ff6b91cf60e (Unity) malloc_internal
+0x00007ff6b95c0d12 (Unity) <lambda_d60225e70dbe1914760649c8fff9b69e>::operator()
+0x00007ff6b95c13a1 (Unity) FileCacherRead::InitializeReadCommands
+0x00007ff6b95c0aaa (Unity) FileCacherRead::FileCacherRead
+0x00007ff6b997f80c (Unity) SerializedFile::InitializeRead
+0x00007ff6b9961041 (Unity) PersistentManager::GetStreamNameSpaceInternal
+0x00007ff6b996042a (Unity) PersistentManager::GetSerializedFileIfObjectAvailable
+0x00007ff6b9966272 (Unity) PersistentManager::ReadAndActivateObjectThreaded
+0x00007ff6b9966c01 (Unity) PersistentManager::ReadObjectThreaded
+0x00007ff6b99669bc (Unity) PersistentManager::ReadObject
+0x00007ff6b8aaef0b (Unity) PPtr<Object>::operator Object * __ptr64
+0x00007ff6b9861c59 (Unity) dynamic_pptr_cast<MonoScript * __ptr64,Object>
+0x00007ff6bad3971e (Unity) AssetImportWorkerClient::RegisterAvailableScripts
+0x00007ff6bad2e01a (Unity) <lambda_e4c09a862f47a773e31babb76239f51f>::operator()
+0x00007ff6bad676f2 (Unity) asio::detail::completion_handler<core::mutable_function<void __cdecl(void)>,asio::io_context::basic_executor_type<std::allocator<void>,0> >::do_complete
+0x00007ff6bad5369e (Unity) asio::detail::win_iocp_io_context::do_one
+0x00007ff6bad55304 (Unity) asio::detail::win_iocp_io_context::run
+0x00007ff6bad65a9c (Unity) IOService::Run
+0x00007ff6bad3a25f (Unity) AssetImportWorkerClient::Run
+0x00007ff6bad04f67 (Unity) RunAssetImportWorkerClientV2
+0x00007ff6bad04feb (Unity) RunAssetImporterV2
+0x00007ff6ba50ab91 (Unity) Application::InitializeProject
+0x00007ff6ba98f525 (Unity) WinMain
+0x00007ff6bbd742fe (Unity) __scrt_common_main_seh
+0x00007ffa86f14034 (KERNEL32) BaseThreadInitThunk
+0x00007ffa87863691 (ntdll) RtlUserThreadStart
+

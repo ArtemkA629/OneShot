@@ -16,15 +16,15 @@ public class Shop : MonoBehaviour
     [Header("Money")]
     [SerializeField] private TextMeshProUGUI _coinsText;
 
-    private static Coins _coins = new Coins();
-    private static WeaponCard[] _weaponCards;
     private static int _currentWeaponIndex;
     private static int _chosenWeaponIndex;
+    private static WeaponCard[] _weaponCards;
+    private static Coins _coins = new Coins();
 
     public static int CurrentWeaponIndex 
     {
         get { return _currentWeaponIndex; }
-        set { _currentWeaponIndex = Mathf.Clamp(value, 0, _weaponCards.Length - 1); } 
+        private set { _currentWeaponIndex = Mathf.Clamp(value, 0, _weaponCards.Length - 1); } 
     }
 
     private void OnEnable()
@@ -48,8 +48,6 @@ public class Shop : MonoBehaviour
 
         _coins.Change(GlobalDataHolder.CoinsToAdd);
         GlobalDataHolder.ResetCoinsAmount();
-
-
     }
 
     private void OnDisable()
