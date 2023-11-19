@@ -15,7 +15,6 @@ public class RaycastAttack : AttackBehaviour
     [SerializeField, Min(0f)] private float _spreadFactor = 1f;
 
     [Header("Particle System")]
-    [SerializeField] private ParticleSystem _muzzleEffect;
     [SerializeField] private ParticleSystem _hitEffectPrefab;
     [SerializeField, Min(0f)] private float _hitEffectDestroyDelay = 2f;
 
@@ -24,6 +23,7 @@ public class RaycastAttack : AttackBehaviour
     [SerializeField] private AudioClip _audioClip;
 
     private IWeaponAttackReaction _shakeCameraOnWeaponAttack;
+    private ParticleSystem _muzzleEffect;
 
     private void Start()
     {

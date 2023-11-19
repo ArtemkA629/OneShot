@@ -6,8 +6,6 @@ public class AnimateWalk : StateMachineBehaviour
     private NavMeshAgent _navMeshAgent;
     private Transform _playerTransform;
 
-    private float _attackRange = 1.8f;
-
     public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _navMeshAgent = animator.GetComponent<NavMeshAgent>();
@@ -21,8 +19,8 @@ public class AnimateWalk : StateMachineBehaviour
         _navMeshAgent.SetDestination(_playerTransform.position);
         var distance = Vector3.Distance(animator.transform.position, _playerTransform.position);
 
-        if (distance < _attackRange)
-            animator.SetBool(EnemyAnimatorConstStrings.Attacking, true);
+        if (distance < EnemyAnimatorConstants.AttackRange)
+            animator.SetBool(EnemyAnimatorConstants.Attacking, true);
     }
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
