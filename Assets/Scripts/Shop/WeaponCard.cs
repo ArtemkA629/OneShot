@@ -8,19 +8,29 @@ public class WeaponCard
     private GameObject _model;
     private string _cardText;
 
+    private static string[] _cardTextVariants =
+    {
+        "Выбрано",
+        "Не выбрано"
+    };
+
     public Sprite Sprite => _sprite;
-    public string CardText => _cardText;
+    public string CardText  => _cardText;
 
     public static event Action<GameObject> Unchanged;
     public static event Action<int> Bought;
-
-    public WeaponCard() { }
 
     public WeaponCard(WeaponItem weaponItem)
     {
         _sprite = weaponItem.Sprite;
         _model = weaponItem.Model;
         _cardText = weaponItem.CardTextAtStart;
+    }
+
+    public void SetCurrentText(string cardText)
+    {
+        if (CardTextIsAcceptable(cardText))
+            _cardText = cardText;
     }
 
     public void ChangeState(int moneyCount)
@@ -40,10 +50,7 @@ public class WeaponCard
         }
 
         else if (!Chosen())
-        {
             ApplyChange("Выбрано");
-            Debug.Log("edf");
-        }
     }
 
     public void Unchange()
@@ -72,4 +79,14 @@ public class WeaponCard
     {
         return _cardText == "Выбрано";
     }
+
+    private bool CardTextIsAcceptable(string cardText)
+    {
+        foreach (var item in _cardTextVariants)
+            if (cardText.Equals(item))
+                return true;
+
+        return int.TryParse(cardText, out int result);
+    }
 }
+ 

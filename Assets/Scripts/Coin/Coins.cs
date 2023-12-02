@@ -18,4 +18,10 @@ public class Coins
         Amount += count;
         Changed?.Invoke();
     }
+
+    public void SetAmount(int amount)
+    {
+        Amount = amount;
+        Changed?.Invoke();
+    }
 }

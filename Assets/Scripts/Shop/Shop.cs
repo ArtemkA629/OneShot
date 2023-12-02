@@ -1,27 +1,23 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class Shop : MonoBehaviour
 {
-    [Header("WeaponCard")]
-    [SerializeField] private Image _weaponImage;
-    [SerializeField] private TextMeshProUGUI _cardText;
+    [Header("WeaponItems")]
     [SerializeField] private WeaponItem[] _weaponItems;
 
     [Header("Buttons")]
-    [SerializeField] private GameObject _rightButton;
-    [SerializeField] private GameObject _leftButton;
+    [SerializeField] private ScrollButton _rightButton;
+    [SerializeField] private ScrollButton _leftButton;
 
-    [Header("Money")]
-    [SerializeField] private TextMeshProUGUI _coinsText;
+    private int _currentWeaponIndex;
+    private int _chosenWeaponIndex;
+    private WeaponCard[] _weaponCards;
+    private ShopView _shopView;
+    private Coins _coins = new();
 
-    private static int _currentWeaponIndex;
-    private static int _chosenWeaponIndex;
-    private static WeaponCard[] _weaponCards;
-    private static Coins _coins = new Coins();
-
-    public static int CurrentWeaponIndex 
+    public Coins Coins => _coins;
+    public int CurrentWeaponIndex 
     {
         get { return _currentWeaponIndex; }
         private set { _currentWeaponIndex = Mathf.Clamp(value, 0, _weaponCards.Length - 1); } 
@@ -31,20 +27,32 @@ public class Shop : MonoBehaviour
     {
         WeaponCard.Unchanged += OnWeaponCardUnchanged;
         WeaponCard.Bought += OnWeaponBought;
+
+        _rightButton.Clicked += OnScrollButtonClick;
+        _leftButton.Clicked += OnScrollButtonClick;
+
         _coins.Changed += OnCoinsAmountChanged;
+    }
+
+    private void Awake()
+    {
+        _shopView = GetComponent<ShopView>();
+
+        int coinsAmount = ShopSaving.GetInt(SavingDataConstStrings.CoinsAmount);
+        _coins.SetAmount(coinsAmount);
+
+        _currentWeaponIndex = ShopSaving.GetInt(SavingDataConstStrings.CurrentWeaponIndex);
+        _chosenWeaponIndex = ShopSaving.GetInt(SavingDataConstStrings.ChosenWeaponIndex);
+
+        if (_weaponCards == null)
+            LoadWeaponCards();
+        SetWeaponCardsData();
     }
 
     private void Start()
     {
-        if (_weaponCards == null)
-        {
-            _weaponCards = new WeaponCard[_weaponItems.Length];
-            for (int i = 0; i < _weaponCards.Length; i++)
-                _weaponCards[i] = new WeaponCard(_weaponItems[i]);
-        }
-
-        SetWeaponCard();
-        SetButtons();
+        SetWeaponCardView();
+        SetButtonsAtStart();
 
         _coins.Change(GlobalDataHolder.CoinsToAdd);
         GlobalDataHolder.ResetCoinsAmount();
@@ -54,19 +62,11 @@ public class Shop : MonoBehaviour
     {
         WeaponCard.Unchanged -= OnWeaponCardUnchanged;
         WeaponCard.Bought -= OnWeaponBought;
+
+        _rightButton.Clicked -= OnScrollButtonClick;
+        _leftButton.Clicked -= OnScrollButtonClick;
+
         _coins.Changed -= OnCoinsAmountChanged;
-    }
-
-    public void Scroll(bool scrollRight)
-    {
-        if (scrollRight)
-            CurrentWeaponIndex++;
-        else
-            CurrentWeaponIndex--;
-
-        SetWeaponCard();
-
-        SwitchScrollButtons(scrollRight);
     }
 
     public void ClickOnCard()
@@ -74,7 +74,7 @@ public class Shop : MonoBehaviour
         _weaponCards[CurrentWeaponIndex].ChangeState(_coins.Amount);
     }
 
-    private void SwitchScrollButtons(bool scrollRight)
+    private void SwitchScrollButtons(ScrollButtonType clickedButton)
     {
         int firstIndex = 0;
         int secondIndex = 1;
@@ -84,33 +84,57 @@ public class Shop : MonoBehaviour
         bool canSwitchLeftButton = CurrentWeaponIndex == firstIndex || CurrentWeaponIndex == secondIndex;
         bool canSwitchRightButton = CurrentWeaponIndex == lastIndex || CurrentWeaponIndex == prelastIndex;
 
-        if (canSwitchLeftButton)
-            _leftButton.SetActive(scrollRight);
-
         if (canSwitchRightButton)
-            _rightButton.SetActive(!scrollRight);
+            _rightButton.Set(clickedButton);
+        if (canSwitchLeftButton)
+            _leftButton.Set(clickedButton);
     }
 
-    private void SetWeaponCard()
+    private void LoadWeaponCards()
     {
-        _weaponImage.sprite = _weaponCards[CurrentWeaponIndex].Sprite;
-        _cardText.text = _weaponCards[CurrentWeaponIndex].CardText;
+        _weaponCards = new WeaponCard[_weaponItems.Length];
+        for (int i = 0; i < _weaponCards.Length; i++)
+        {
+            string key = SavingDataConstStrings.WeaponCard + i;
+
+            _weaponCards[i] = new WeaponCard(_weaponItems[i]);
+            if (ShopSaving.KeyIsNull(key))
+                ShopSaving.SaveString(key, _weaponCards[i].CardText);
+        }
     }
 
-    private void SetButtons()
+    private void SetWeaponCardsData()
+    {
+        for (int i = 0; i < _weaponCards.Length; i++)
+        {
+            string weaponCardText = ShopSaving.GetString(SavingDataConstStrings.WeaponCard + i);
+            _weaponCards[i].SetCurrentText(weaponCardText);
+        }
+    }
+
+    private void SetButtonsAtStart()
     {
         if (CurrentWeaponIndex != 0)
-            _leftButton.SetActive(true);
+            _leftButton.Appear();
         else if (CurrentWeaponIndex != _weaponCards.Length - 1)
-            _rightButton.SetActive(true);
+            _rightButton.Appear();
+    }
+
+    private void SetWeaponCardView()
+    {
+        _shopView.SetWeaponCard(_weaponCards[_currentWeaponIndex].Sprite, _weaponCards[_currentWeaponIndex].CardText);
     }
 
     private void OnWeaponCardUnchanged(GameObject weaponModel)
     {
-        _cardText.text = _weaponCards[CurrentWeaponIndex].CardText;
+        _shopView.SetWeaponCardText(_weaponCards[_currentWeaponIndex].CardText);
+        ShopSaving.SaveString(SavingDataConstStrings.WeaponCard + CurrentWeaponIndex, _weaponCards[CurrentWeaponIndex].CardText);
 
         _weaponCards[_chosenWeaponIndex].Unchange();
+        ShopSaving.SaveString(SavingDataConstStrings.WeaponCard + _chosenWeaponIndex, _weaponCards[_chosenWeaponIndex].CardText);
+
         _chosenWeaponIndex = _currentWeaponIndex;
+        ShopSaving.SaveInt(SavingDataConstStrings.ChosenWeaponIndex, _chosenWeaponIndex);
     }
 
     private void OnWeaponBought(int coinsToSubtract)
@@ -120,6 +144,20 @@ public class Shop : MonoBehaviour
 
     private void OnCoinsAmountChanged()
     {
-        _coinsText.text =_coins.Amount.ToString();
+        _shopView.SetCoinsAmount(_coins.Amount.ToString());
+        ShopSaving.SaveInt(SavingDataConstStrings.CoinsAmount, _coins.Amount);
+    }
+
+    private void OnScrollButtonClick(ScrollButtonType clickedButton)
+    {
+        if (clickedButton == ScrollButtonType.Right)
+            _currentWeaponIndex++;
+        else
+            _currentWeaponIndex--;
+
+        ShopSaving.SaveInt(SavingDataConstStrings.CurrentWeaponIndex, _currentWeaponIndex);
+
+        SwitchScrollButtons(clickedButton);
+        SetWeaponCardView();
     }
 }
