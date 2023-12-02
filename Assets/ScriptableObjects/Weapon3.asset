@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d27fed4497088b6449efb3679c179d42, type: 3}
-  m_Name: Weapon2
+  m_Name: Weapon3
   m_EditorClassIdentifier: 
   _sprite: {fileID: 0}
-  _model: {fileID: 199669651405181594, guid: 41236ddb97b001d499cadd3503c086dc, type: 3}
-  _cardTextAtStart: 50
+  _model: {fileID: 4205521026231025682, guid: f7a69565ab2ff984789da792b0969f4b, type: 3}
+  _cardTextAtStart: 100
