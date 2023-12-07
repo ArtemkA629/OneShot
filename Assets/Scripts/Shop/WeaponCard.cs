@@ -15,6 +15,7 @@ public class WeaponCard
     };
 
     public Sprite Sprite => _sprite;
+    public GameObject Model => _model;
     public string CardText  => _cardText;
 
     public static event Action<GameObject> Unchanged;

@@ -76,6 +76,7 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Character\Character.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Scripts\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Services\AudioManagerService.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Model\WeaponModel.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Demo\Assets\WFX_Demo_RandomDir.cs" />
     <Compile Include="Assets\Scripts\Weapon\Attack\InvokeAttackByInput.cs" />
     <Compile Include="Assets\Scripts\Coin\CoinSpawner.cs" />
@@ -110,10 +111,8 @@
     <Compile Include="Assets\Scripts\Camera\LerpToRegularPosition.cs" />
     <Compile Include="Assets\Scripts\Shop\WeaponCard.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\TargetScript.cs" />
-    <Compile Include="Assets\Scripts\Weapon\WeaponModel.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Animation\WeaponAnimationEventHandler.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Camera\CameraLook.cs" />
-    <Compile Include="Assets\Scripts\Weapon\WeaponModelChanger.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Tools\Looping\RLoops.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Utilities\TimeHandler.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Services\AudioSettings.cs" />
@@ -173,6 +172,7 @@
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
     <Compile Include="Assets\Scripts\Enums\OverlapType.cs" />
     <Compile Include="Assets\Scripts\SaveSystem\SavingDataConstStrings.cs" />
+    <Compile Include="Assets\Scripts\Weapon\Model\WeaponModelChanger.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Services\Bootstraper.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\TextMouseLock.cs" />
   </ItemGroup>

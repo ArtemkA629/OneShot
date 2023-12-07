@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27fed4497088b6449efb3679c179d42, type: 3}
   m_Name: Weapon2
   m_EditorClassIdentifier: 
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 3f1adea3fba597949b304df071536aca, type: 3}
   _model: {fileID: 199669651405181594, guid: 41236ddb97b001d499cadd3503c086dc, type: 3}
-  _cardTextAtStart: 50
+  _cardTextAtStart: 1

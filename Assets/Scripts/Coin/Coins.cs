@@ -13,7 +13,7 @@ public class Coins
         private set => _amount = Mathf.Clamp(value, 0, int.MaxValue);
     }
 
-    public void Change(int count)
+    public void AddAmount(int count)
     {
         Amount += count;
         Changed?.Invoke();

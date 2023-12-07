@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class GlobalDataHolder : MonoBehaviour
 {
-    [SerializeField] private GameObject _weaponModelAtStart;
-
     public static LevelDifficulty LevelDifficulty { get; private set; }
     public static GameObject WeaponModel { get; private set; }
     public static int CoinsToAdd { get; private set; }
@@ -14,13 +12,16 @@ public class GlobalDataHolder : MonoBehaviour
         CoinsToAdd = 0;
     }
 
+    public static void SetCurrentWeaponModel(GameObject weaponModel)
+    {
+        WeaponModel = weaponModel;
+    }
+
     private void OnEnable()
     {
         LevelButton.LevelChosen += OnLevelChosen;
         WeaponCard.Unchanged += OnUnchanged;
         Enemy.CoinsAmountChanging += OnCoinsAmountChanging;
-
-        WeaponModel = _weaponModelAtStart;
 
         DontDestroyOnLoad(gameObject);
     }

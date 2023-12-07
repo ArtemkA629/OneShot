@@ -421,7 +421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef55e33e0d38eaf468ac076d6b759126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _muzzleEffect: {fileID: 0}
+  _muzzleEffect: {fileID: 5459830026987089579}
 --- !u!1 &4894817301118666854
 GameObject:
   m_ObjectHideFlags: 0
