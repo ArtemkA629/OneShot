@@ -5,10 +5,18 @@ public abstract class Damageable : MonoBehaviour
 {
     [SerializeField] private float _health;
 
+    private float _maxHealth;
+
     public float Health
     {
         get => _health;
-        set => _health = Mathf.Clamp(value, 0f, int.MaxValue);
+        set => _health = Mathf.Clamp(value, 0f, float.MaxValue);
+    }
+
+    public float MaxHealth
+    {
+        get => _maxHealth;
+        set => _maxHealth = Mathf.Clamp(value, 0f, float.MaxValue);
     }
 
     public event Action Dead;
@@ -16,6 +24,8 @@ public abstract class Damageable : MonoBehaviour
     private void OnEnable()
     {
         Dead += OnDead;
+
+        _maxHealth = _health;
     }
 
     private void OnDisable()

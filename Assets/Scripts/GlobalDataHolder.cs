@@ -22,8 +22,6 @@ public class GlobalDataHolder : MonoBehaviour
         LevelButton.LevelChosen += OnLevelChosen;
         WeaponCard.Unchanged += OnUnchanged;
         Enemy.CoinsAmountChanging += OnCoinsAmountChanging;
-
-        DontDestroyOnLoad(gameObject);
     }
 
     private void OnDisable()

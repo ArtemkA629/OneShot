@@ -1,9 +1,10 @@
+using NTC.Pool;
 using UnityEngine;
 
-public class CoinSpawner : MonoBehaviour
+public class CoinSpawner : Spawner
 {
     [SerializeField] private Transform _canvasParent;
-    [SerializeField] private CoinAddingView _addingCoin;
+    [SerializeField] private AddingCoinView _addingCoin;
 
     private void OnEnable()
     {
@@ -17,7 +18,7 @@ public class CoinSpawner : MonoBehaviour
 
     private void OnCoinViewing(Vector3 enemyPosition)
     {
-        var addingCoin = Instantiate<CoinAddingView>(_addingCoin, enemyPosition, Quaternion.identity, _canvasParent);
+        var addingCoin = NightPool.Spawn<AddingCoinView>(_addingCoin, enemyPosition, Quaternion.identity, _canvasParent);
         addingCoin.Init(enemyPosition);
     }
 }

@@ -61,7 +61,6 @@
     <Compile Include="Assets\Scripts\Camera\ShakeCameraOnWeaponAttack.cs" />
     <Compile Include="Assets\Scripts\AttackBehaviour.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\GasTankScript.cs" />
-    <Compile Include="Assets\Scripts\Coin\CoinAddingView.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Character\CharacterKinematics.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Weapons\Muzzle.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Weapons\ScopeBehaviour.cs" />
@@ -83,6 +82,7 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Services\IGameService.cs" />
     <Compile Include="Assets\Scripts\Enemy\EnemySpawner.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\ImpactScript.cs" />
+    <Compile Include="Assets\Scripts\MonoInstallers\CoinSpawnerInstaller.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Character\CharacterBehaviour.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Character\Movement.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Services\IGameModeService.cs" />
@@ -91,6 +91,7 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\Projectile.cs" />
     <Compile Include="Assets\Scripts\Enemy\OverlapAttack.cs" />
     <Compile Include="Assets\Scripts\Player\Player.cs" />
+    <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Demo\Assets\CFX_Demo_RandomDir.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Spawn System\CFX_SpawnSystem.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Animation\PlaySoundBehaviour.cs" />
@@ -102,6 +103,7 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Weapons\Scope.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Character\InventoryBehaviour.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Demo\Assets\WFX_Demo_DeleteAfterDelay.cs" />
+    <Compile Include="Assets\Scripts\MonoInstallers\EnemySpawnerInstaller.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Demo\Assets\CFX_Demo_Translate.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\ExplosiveBarrelScript.cs" />
@@ -110,8 +112,10 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Tools\Log.cs" />
     <Compile Include="Assets\Scripts\Camera\LerpToRegularPosition.cs" />
     <Compile Include="Assets\Scripts\Shop\WeaponCard.cs" />
+    <Compile Include="Assets\Scripts\MonoInstallers\CameraInstaller.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\TargetScript.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Animation\WeaponAnimationEventHandler.cs" />
+    <Compile Include="Assets\Scripts\MonoInstallers\PlayerInstaller.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Camera\CameraLook.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Tools\Looping\RLoops.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Utilities\TimeHandler.cs" />
@@ -136,6 +140,7 @@
     <Compile Include="Assets\Scripts\Weapon\WeaponAnimatorConstStrings.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Tools\Looping\Loops.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\TextTimescale.cs" />
+    <Compile Include="Assets\Scripts\Coin\AddingCoinView.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\TextAmmunitionCurrent.cs" />
     <Compile Include="Assets\Scripts\Button\CustomButton.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Services\ServiceLocator.cs" />
@@ -1033,6 +1038,10 @@
     <ProjectReference Include="Zenject-ReflectionBaking-Editor.csproj">
       <Project>{CF2F1D1B-0142-0ADF-88EA-2E4274975A60}</Project>
       <Name>Zenject-ReflectionBaking-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="NightPool.csproj">
+      <Project>{AE5CFFCC-F01C-EB6B-C8A8-1D0681651837}</Project>
+      <Name>NightPool</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

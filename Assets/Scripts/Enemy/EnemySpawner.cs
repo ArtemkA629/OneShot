@@ -1,6 +1,7 @@
+using NTC.Pool;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : Spawner
 {
     [SerializeField] private Damageable _enemy;
     [SerializeField] private float _spawnRange;
@@ -33,6 +34,6 @@ public class EnemySpawner : MonoBehaviour
         var position = new Vector3(Random.Range(-_spawnRange, _spawnRange), 0f, Random.Range(-_spawnRange, _spawnRange));
         var rotation = _enemy.transform.rotation;
 
-        Instantiate(_enemy, position, rotation);
+        NightPool.Spawn(_enemy, position, rotation);
     }
 }

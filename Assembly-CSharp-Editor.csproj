@@ -937,6 +937,10 @@
       <Project>{CF2F1D1B-0142-0ADF-88EA-2E4274975A60}</Project>
       <Name>Zenject-ReflectionBaking-Editor</Name>
     </ProjectReference>
+    <ProjectReference Include="NightPool.csproj">
+      <Project>{AE5CFFCC-F01C-EB6B-C8A8-1D0681651837}</Project>
+      <Name>NightPool</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

@@ -1,3 +1,4 @@
+using NTC.Pool;
 using UnityEngine;
 
 public class RaycastAttack : AttackBehaviour
@@ -53,9 +54,10 @@ public class RaycastAttack : AttackBehaviour
             var hitCollider = hitInfo.collider;
 
             if (hitCollider.TryGetComponent(out Damageable damageable))
+            {
                 damageable.ApplyDamage(_damage);
-
-            SpawnParicleEffectsOnHit(hitInfo);
+                SpawnParicleEffectsOnHit(hitInfo);
+            }
         }
     }
 
@@ -73,9 +75,9 @@ public class RaycastAttack : AttackBehaviour
         if (_hitEffectPrefab != null)
         {
             var hitEffectRotation = Quaternion.LookRotation(hitInfo.normal);
-            var hitEffect = Instantiate(_hitEffectPrefab, hitInfo.point, hitEffectRotation);
+            var hitEffect = NightPool.Spawn(_hitEffectPrefab, hitInfo.point, hitEffectRotation);
 
-            Destroy(hitEffect.gameObject, _hitEffectDestroyDelay);
+            NightPool.Despawn(hitEffect.gameObject, _hitEffectDestroyDelay);
         }
     }
 
