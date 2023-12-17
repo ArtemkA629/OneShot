@@ -99,7 +99,6 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Tools\Looping\LoopUtilities.cs" />
     <Compile Include="Assets\Scripts\Axis.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Character\Inventory.cs" />
-    <Compile Include="Assets\Scripts\SaveSystem\DataDeletionButtonCreator.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Weapons\Scope.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Character\InventoryBehaviour.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Demo\Assets\WFX_Demo_DeleteAfterDelay.cs" />
@@ -112,6 +111,7 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Tools\Log.cs" />
     <Compile Include="Assets\Scripts\Camera\LerpToRegularPosition.cs" />
     <Compile Include="Assets\Scripts\Shop\WeaponCard.cs" />
+    <Compile Include="Assets\Scripts\Saving\SavingDataConstStrings.cs" />
     <Compile Include="Assets\Scripts\MonoInstallers\CameraInstaller.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\TargetScript.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Animation\WeaponAnimationEventHandler.cs" />
@@ -139,6 +139,7 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\Element.cs" />
     <Compile Include="Assets\Scripts\Weapon\WeaponAnimatorConstStrings.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Tools\Looping\Loops.cs" />
+    <Compile Include="Assets\Scripts\Saving\SaveSystem.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\TextTimescale.cs" />
     <Compile Include="Assets\Scripts\Coin\AddingCoinView.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\TextAmmunitionCurrent.cs" />
@@ -147,8 +148,8 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\ProjectileScript.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\CasingScript.cs" />
     <Compile Include="Assets\Scripts\Damageable.cs" />
-    <Compile Include="Assets\Scripts\SaveSystem\ShopSaving.cs" />
     <Compile Include="Assets\Scripts\Button\LevelButton.cs" />
+    <Compile Include="Assets\Scripts\Saving\DataDeletionButtonCreator.cs" />
     <Compile Include="Assets\Scripts\MonoInstallers\GlobalDataHolderInstaller.cs" />
     <Compile Include="Assets\Scripts\Coin\Coins.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\CanvasSpawner.cs" />
@@ -174,9 +175,9 @@
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Scripts\WFX_LightFlicker.cs" />
     <Compile Include="Assets\Scripts\Enemy\AnimateWalk.cs" />
     <Compile Include="Assets\Scripts\Button\ScriptableButton.cs" />
+    <Compile Include="Assets\Scripts\SaveData.cs" />
     <Compile Include="Assets\ImportPackages\JMO Assets\WarFX\Demo\Assets\CFX_Demo_RotateCamera.cs" />
     <Compile Include="Assets\Scripts\Enums\OverlapType.cs" />
-    <Compile Include="Assets\Scripts\SaveSystem\SavingDataConstStrings.cs" />
     <Compile Include="Assets\Scripts\Weapon\Model\WeaponModelChanger.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Services\Bootstraper.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\TextMouseLock.cs" />

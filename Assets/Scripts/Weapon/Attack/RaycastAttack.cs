@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class RaycastAttack : AttackBehaviour
 {
-    [Header("Damage")]
-    [SerializeField, Min(0f)] private float _damage = 10f;
-
     [Header("Ray")]
     [SerializeField, Min(0f)] private LayerMask _layerMask;
     [SerializeField, Min(0f)] private float _distance = Mathf.Infinity;

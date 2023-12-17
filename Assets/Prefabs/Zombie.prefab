@@ -226,6 +226,7 @@ MonoBehaviour:
   - {fileID: 3606891814960852582}
   - {fileID: 6387374011937854870}
   - {fileID: 333507307166162255}
+  _deathDelay: 4
 --- !u!114 &8554173684191677699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -571,7 +572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fb541f68112624e9d5de7379e8715c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _overlapAttack: {fileID: 8554173684191677699}
+  _enemy: {fileID: 8837849029691185088}
 --- !u!1 &1820042215554409337
 GameObject:
   m_ObjectHideFlags: 0
@@ -3016,7 +3017,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fb541f68112624e9d5de7379e8715c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _overlapAttack: {fileID: 8554173684191677699}
+  _enemy: {fileID: 8837849029691185088}
 --- !u!1 &8648782727472913872
 GameObject:
   m_ObjectHideFlags: 0

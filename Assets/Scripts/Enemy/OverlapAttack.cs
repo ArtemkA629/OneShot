@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class OverlapAttack : AttackBehaviour
 {
-    [Header("Common")]
-    [SerializeField, Min(0f)] private float _damage = 10f;
-
     [Header("Masks")]
     [SerializeField] private LayerMask _searchLayerMask;
     [SerializeField] private LayerMask _obstacleLayerMask;

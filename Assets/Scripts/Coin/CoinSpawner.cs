@@ -18,7 +18,7 @@ public class CoinSpawner : Spawner
 
     private void OnCoinViewing(Vector3 enemyPosition)
     {
-        var addingCoin = NightPool.Spawn<AddingCoinView>(_addingCoin, enemyPosition, Quaternion.identity, _canvasParent);
+        var addingCoin = NightPool.Spawn(_addingCoin, enemyPosition, Quaternion.identity, _canvasParent);
         addingCoin.Init(enemyPosition);
     }
 }
