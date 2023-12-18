@@ -34,10 +34,10 @@ public class ShopView : MonoBehaviour
             ApplySetButtons(true, true);
     }
 
-    public void SetWeaponCard(Sprite weaponSprite, string cardText)
+    public void SetWeaponCard(WeaponCard weaponCard)
     {
-        _weaponImage.sprite = weaponSprite;
-        SetWeaponCardText(cardText);
+        _weaponImage.sprite = weaponCard.Sprite;
+        SetWeaponCardText(weaponCard.CardText);
     }
 
     public void SetWeaponCardText(string cardText)

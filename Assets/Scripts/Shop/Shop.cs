@@ -76,12 +76,13 @@ public class Shop : MonoBehaviour
     private void SetWeaponCardsData()
     {
         _weaponCards = new WeaponCard[_weaponItems.Length];
+        bool savingDataWasEverSaved = _saveData.WasEverSaved();
 
         for (int i = 0; i < _weaponCards.Length; i++)
         {
             _weaponCards[i] = new WeaponCard(_weaponItems[i]);
 
-            if (_saveData.WasEverSaved())
+            if (savingDataWasEverSaved)
                 _weaponCards[i].SetCurrentText(_saveData.WeaponCardTexts[i]);
         }
     }
@@ -93,8 +94,7 @@ public class Shop : MonoBehaviour
 
     private void SetWeaponCardView()
     {
-        _shopView.SetWeaponCard(_weaponCards[_saveData.CurrentWeaponIndex].Sprite, 
-            _weaponCards[_saveData.CurrentWeaponIndex].CardText);
+        _shopView.SetWeaponCard(_weaponCards[_saveData.CurrentWeaponIndex]);
     }
 
     private void OnWeaponCardUnchanged(GameObject weaponModel)

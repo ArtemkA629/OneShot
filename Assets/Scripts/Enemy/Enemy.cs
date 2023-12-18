@@ -2,14 +2,14 @@ using NTC.Pool;
 using System;
 using UnityEngine;
 
-public class Enemy : Damageable, IDespawnable
+public class Enemy : Damageable, IDespawnable, IAttackable
 {
     [SerializeField] private Collider[] _enemyColliders;
     [SerializeField] private float _deathDelay = 4f;
 
     private Animator _animator;
     private Spawner _spawner;
-    private AttackBehaviour _enemyAttack;
+    private AttackBehaviour _attack;
 
     public static event Action<int> CoinsAmountChanging;
     public static event Action<Vector3> CoinViewing;
@@ -17,7 +17,7 @@ public class Enemy : Damageable, IDespawnable
     private void Start()
     {
         _animator = GetComponent<Animator>();
-        _enemyAttack = GetComponent<AttackBehaviour>();
+        _attack = GetComponent<AttackBehaviour>();
         _spawner = FindAnyObjectByType<Spawner>();
     }
 
@@ -46,6 +46,6 @@ public class Enemy : Damageable, IDespawnable
 
     public void Attack()
     {
-        _enemyAttack.PerformAttack();
+        _attack.PerformAttack();
     }
 }

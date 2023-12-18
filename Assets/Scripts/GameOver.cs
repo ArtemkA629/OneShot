@@ -1,13 +1,9 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    [Header("View")]
     [SerializeField] private GameObject _gameOverPanel;
-
-    [Header("Input")]
     [SerializeField] private MonoBehaviour[] _inputScripts;
 
     public void Stop()

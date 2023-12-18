@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class InvokeAttackByInput : MonoBehaviour
 {
-    private RaycastAttack _weaponAttack;
+    private IAttackable _attackable;
 
     private void Start()
     {
-        _weaponAttack = GetComponent<RaycastAttack>();
+        _attackable = FindObjectOfType<Player>();
     }
 
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))
-            _weaponAttack.PerformAttack();
+            _attackable.Attack();
     }
 }
