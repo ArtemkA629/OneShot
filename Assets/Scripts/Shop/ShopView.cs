@@ -21,6 +21,12 @@ public class ShopView : MonoBehaviour
         _rightButton = rightButton.gameObject;
     }
 
+    public void Set(WeaponCard[] weaponCards, int currentWeaponIndex)
+    {
+        SetButtons(currentWeaponIndex, weaponCards.Length - 1);
+        SetWeaponCard(weaponCards[currentWeaponIndex]);
+    }
+
     public void SetButtons(int currentWeaponIndex, int lastIndex)
     {
         if (currentWeaponIndex > lastIndex)

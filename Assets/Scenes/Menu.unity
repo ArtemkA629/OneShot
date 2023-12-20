@@ -1247,7 +1247,7 @@ GameObject:
   - component: {fileID: 836427251}
   - component: {fileID: 836427253}
   - component: {fileID: 836427252}
-  - component: {fileID: 836427254}
+  - component: {fileID: 836427256}
   - component: {fileID: 836427255}
   m_Layer: 5
   m_Name: Shop
@@ -1320,27 +1320,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 836427250}
   m_CullTransparentMesh: 1
---- !u!114 &836427254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 836427250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f3420e2218311a4cbeb07526265f1e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _weaponItems:
-  - {fileID: 11400000, guid: 990a9b3527b042c4088926274564a851, type: 2}
-  - {fileID: 11400000, guid: 96aa0723df7fc0649b46f8354b4cf4cd, type: 2}
-  - {fileID: 11400000, guid: e3b6b0430ad66f444b778d6bb0fa029a, type: 2}
-  - {fileID: 11400000, guid: be677c2cdc489b04fa578989478e5649, type: 2}
-  - {fileID: 11400000, guid: fc7190454b9a06e408a021010336d454, type: 2}
-  _rightButton: {fileID: 1620298072}
-  _leftButton: {fileID: 1180633660}
-  _dataDeletionButtonCreator: {fileID: 1690493036}
 --- !u!114 &836427255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1356,6 +1335,27 @@ MonoBehaviour:
   _weaponImage: {fileID: 1821403063}
   _cardText: {fileID: 664999600}
   _coinsText: {fileID: 747062502}
+--- !u!114 &836427256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836427250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fee7ab19756a424aa02cf282c3142b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponItems:
+  - {fileID: 11400000, guid: 990a9b3527b042c4088926274564a851, type: 2}
+  - {fileID: 11400000, guid: 96aa0723df7fc0649b46f8354b4cf4cd, type: 2}
+  - {fileID: 11400000, guid: e3b6b0430ad66f444b778d6bb0fa029a, type: 2}
+  - {fileID: 11400000, guid: be677c2cdc489b04fa578989478e5649, type: 2}
+  - {fileID: 11400000, guid: fc7190454b9a06e408a021010336d454, type: 2}
+  _rightButton: {fileID: 1620298072}
+  _leftButton: {fileID: 1180633660}
+  _dataDeletionButtonCreator: {fileID: 1690493036}
 --- !u!1 &861129255
 GameObject:
   m_ObjectHideFlags: 0
@@ -2300,7 +2300,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 836427254}
+      - m_Target: {fileID: 836427256}
         m_TargetAssemblyTypeName: Shop, Assembly-CSharp
         m_MethodName: ClickOnCard
         m_Mode: 1
