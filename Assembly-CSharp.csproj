@@ -70,6 +70,7 @@
     <Compile Include="Assets\Scripts\Shop\ShopView.cs" />
     <Compile Include="Assets\Scripts\Spawners\Spawner.cs" />
     <Compile Include="Assets\Scripts\Enemy\AnimateEnemyAttack.cs" />
+    <Compile Include="Assets\Scripts\Health\HealthView.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Animation\CharacterAnimationEventHandler.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Weapons\Magazine.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Weapons\MuzzleBehaviour.cs" />
@@ -96,6 +97,7 @@
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\PlayParticles.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Tools\Looping\LoopUtilities.cs" />
     <Compile Include="Assets\Scripts\Axis.cs" />
+    <Compile Include="Assets\Scripts\Health\Health.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Character\Inventory.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Weapons\Scope.cs" />
     <Compile Include="Assets\ImportPackages\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Character\InventoryBehaviour.cs" />

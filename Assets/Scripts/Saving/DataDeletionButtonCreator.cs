@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class DataDeletionButtonCreator : MonoBehaviour
 {
+#if UNITY_EDITOR
     public Action ButtonClicked;
 
     private void OnGUI()
@@ -13,4 +14,5 @@ public class DataDeletionButtonCreator : MonoBehaviour
             ButtonClicked?.Invoke();
         }
     }
+#endif
 }

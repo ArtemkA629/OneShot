@@ -52,7 +52,7 @@ public class RaycastAttack : AttackBehaviour
 
             if (hitCollider.TryGetComponent(out Damageable damageable))
             {
-                damageable.ApplyDamage(_damage);
+                damageable.ApplyDamage(Damage);
                 SpawnParicleEffectsOnHit(hitInfo);
             }
         }

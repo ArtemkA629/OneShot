@@ -38,7 +38,7 @@ public class Enemy : Damageable, IDespawnable, IAttackable
 
     public void OnDespawn()
     {
-        Health = MaxHealth;
+        Health.AddAmount(MaxHealthAmount);
 
         foreach (var collider in _enemyColliders)
             collider.enabled = true;

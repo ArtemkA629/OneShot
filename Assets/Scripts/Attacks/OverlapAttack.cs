@@ -72,7 +72,7 @@ public class OverlapAttack : AttackBehaviour
                     continue;
             }
 
-            damageable.ApplyDamage(_damage);
+            damageable.ApplyDamage(Damage);
         }
     }
 

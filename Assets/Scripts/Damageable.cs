@@ -3,29 +3,21 @@ using UnityEngine;
 
 public abstract class Damageable : MonoBehaviour
 {
-    [SerializeField] private float _health;
+    [SerializeField] private int _maxHealthAmount;
 
-    private float _maxHealth;
-
-    public float Health
-    {
-        get => _health;
-        set => _health = Mathf.Clamp(value, 0f, float.MaxValue);
-    }
-
-    public float MaxHealth
-    {
-        get => _maxHealth;
-        set => _maxHealth = Mathf.Clamp(value, 0f, float.MaxValue);
-    }
+    public Health Health { get; private set; }
+    public int MaxHealthAmount => _maxHealthAmount;
 
     public event Action Dead;
+
+    private void Awake()
+    {
+        Health = new Health(_maxHealthAmount);
+    }
 
     private void OnEnable()
     {
         Dead += OnDead;
-
-        _maxHealth = _health;
     }
 
     private void OnDisable()
@@ -33,14 +25,14 @@ public abstract class Damageable : MonoBehaviour
         Dead -= OnDead;
     }
 
-    public void ApplyDamage(float damage)
+    public void ApplyDamage(int damage)
     {
-        if (damage < 0f)
+        if (damage < 0)
             throw new ArgumentOutOfRangeException(nameof(damage));
 
-        Health -= damage;
+        Health.SubtractAmount(damage);
 
-        if (Health == 0f)
+        if (Health.Amount == 0)
             Dead?.Invoke();
     }
 

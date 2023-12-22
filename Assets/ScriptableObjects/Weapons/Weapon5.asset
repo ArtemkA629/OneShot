@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: 24436d721e271df459cddf64ca1ff0c7, type: 3}
   _model: {fileID: 4489477920470386682, guid: c507afc317cc9b9499a4b601798611c6, type: 3}
-  _cardTextAtStart: 4
+  _cardTextAtStart: 1000

@@ -1,18 +1,18 @@
 using System;
 using UnityEngine;
 
-[Serializable]
 public class WeaponCard
 {
-    private Sprite _sprite;
-    private GameObject _model;
-    private string _cardText;
+    private readonly Sprite _sprite;
+    private readonly GameObject _model;
 
-    private static string[] _cardTextVariants =
+    private readonly static string[] _cardTextVariants =
     {
         "Выбрано",
         "Не выбрано"
     };
+
+    private string _cardText;
 
     public Sprite Sprite => _sprite;
     public GameObject Model => _model;
@@ -73,7 +73,7 @@ public class WeaponCard
 
     private bool Locked()
     {
-        return int.TryParse(_cardText, out int result);
+        return int.TryParse(_cardText, out _);
     }
 
     private bool Chosen()
@@ -86,8 +86,7 @@ public class WeaponCard
         foreach (var item in _cardTextVariants)
             if (cardText.Equals(item))
                 return true;
-
-        return int.TryParse(cardText, out int result);
+        return int.TryParse(cardText, out _);
     }
 }
  
