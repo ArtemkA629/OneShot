@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class DataDeletionButtonCreator : MonoBehaviour
 {
-#if UNITY_EDITOR
     public Action ButtonClicked;
 
+#if UNITY_EDITOR
     private void OnGUI()
     {
         if (GUI.Button(new Rect(50f, 0f, 100f, 30f), "Delete"))
