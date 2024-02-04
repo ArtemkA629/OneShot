@@ -2,23 +2,38 @@ using NTC.Pool;
 using System;
 using UnityEngine;
 
-public class Enemy : Damageable, IDespawnable, IAttackable
+public class Enemy : Damageable, IAttackable
 {
     [SerializeField] private Collider[] _enemyColliders;
     [SerializeField] private float _deathDelay = 4f;
 
     private Animator _animator;
-    private Spawner _spawner;
     private AttackBehaviour _attack;
 
     public static event Action<int> CoinsAmountChanging;
     public static event Action<Vector3> CoinViewing;
 
-    private void Start()
+    private void Awake()
     {
+        base.OnAwake();
         _animator = GetComponent<Animator>();
         _attack = GetComponent<AttackBehaviour>();
-        _spawner = FindAnyObjectByType<Spawner>();
+    }
+
+    private void OnEnable()
+    {
+        base.Enable();
+    }
+
+    private void OnDisable()
+    {
+        base.Disable();
+        if (Health.Amount == MaxHealthAmount)
+            return;
+
+        Health.SetAmount(MaxHealthAmount);
+        foreach (var collider in _enemyColliders)
+            collider.enabled = true;
     }
 
     protected override void OnDead()
@@ -32,16 +47,7 @@ public class Enemy : Damageable, IDespawnable, IAttackable
         CoinsAmountChanging?.Invoke(amount);
         CoinViewing?.Invoke(transform.position);
 
-        _spawner.ApplyDespawn(gameObject, _deathDelay);
-        OnDespawn();
-    }
-
-    public void OnDespawn()
-    {
-        Health.AddAmount(MaxHealthAmount);
-
-        foreach (var collider in _enemyColliders)
-            collider.enabled = true;
+        NightPool.Despawn(this, _deathDelay);
     }
 
     public void Attack()

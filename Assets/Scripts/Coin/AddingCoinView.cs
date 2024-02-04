@@ -10,14 +10,12 @@ public class AddingCoinView : MonoBehaviour, IDespawnable
 
     private Image _coinImage;
     private Vector3 _finalPosition;
-    private Spawner _spawner;
 
     [Inject] private Camera _playerCamera;
 
     private void Start()
     {
         _coinImage = GetComponent<Image>();
-        _spawner = FindAnyObjectByType<Spawner>();
     }
 
     public void Init(Vector3 enemyPosition)
@@ -36,7 +34,7 @@ public class AddingCoinView : MonoBehaviour, IDespawnable
 
         if (position == _finalPosition)
         {
-            _spawner.ApplyDespawn(gameObject);
+            NightPool.Despawn(this);
             OnDespawn();
         }
     }

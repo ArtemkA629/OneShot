@@ -5,11 +5,8 @@ using TMPro;
 
 public class ShopView : MonoBehaviour
 {
-    [Header("WeaponCard")]
     [SerializeField] private Image _weaponImage;
     [SerializeField] private TextMeshProUGUI _cardText;
-    
-    [Header("Money")]
     [SerializeField] private TextMeshProUGUI _coinsText;
 
     private GameObject _leftButton;

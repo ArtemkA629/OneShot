@@ -15,9 +15,7 @@ public class HealthView : MonoBehaviour
     private void Start()
     {
         _playerHealth = _player.Health;
-
         _playerHealth.Changed += OnHealthChanged;
-
         OnHealthChanged();
     }
 

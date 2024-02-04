@@ -5,22 +5,25 @@ public abstract class Damageable : MonoBehaviour
 {
     [SerializeField] private int _maxHealthAmount;
 
-    public Health Health { get; private set; }
+    private Health _health;
+
+    public Health Health => _health;
     public int MaxHealthAmount => _maxHealthAmount;
 
     public event Action Dead;
 
-    private void Awake()
+    protected void OnAwake()
     {
-        Health = new Health(_maxHealthAmount);
+        _health = new Health(_maxHealthAmount);
+        Debug.Log(_maxHealthAmount);
     }
 
-    private void OnEnable()
+    protected void Enable()
     {
         Dead += OnDead;
     }
 
-    private void OnDisable()
+    protected void Disable()
     {
         Dead -= OnDead;
     }
@@ -30,9 +33,9 @@ public abstract class Damageable : MonoBehaviour
         if (damage < 0)
             throw new ArgumentOutOfRangeException(nameof(damage));
 
-        Health.SubtractAmount(damage);
+        _health.SubtractAmount(damage);
 
-        if (Health.Amount == 0)
+        if (_health.Amount == 0)
             Dead?.Invoke();
     }
 

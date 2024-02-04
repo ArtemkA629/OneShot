@@ -3,16 +3,12 @@ using UnityEngine;
 
 public class DataDeletionButtonCreator : MonoBehaviour
 {
-    public Action ButtonClicked;
+    public event Action ButtonClicked;
 
-#if UNITY_EDITOR
-    private void OnGUI()
+    [ContextMenu("DeleteSavedData")]
+    private void DeleteSavedData()
     {
-        if (GUI.Button(new Rect(50f, 0f, 100f, 30f), "Delete"))
-        {
-            PlayerPrefs.DeleteAll();
-            ButtonClicked?.Invoke();
-        }
+        PlayerPrefs.DeleteAll();
+        ButtonClicked?.Invoke();
     }
-#endif
 }

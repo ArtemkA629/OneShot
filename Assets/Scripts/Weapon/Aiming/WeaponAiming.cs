@@ -1,36 +1,37 @@
 using System.Collections;
 using UnityEngine;
+using Cinemachine;
 
 public class WeaponAiming : MonoBehaviour
 {
-    private Animator _animator;
     private Camera _camera;
+    private Animator _animator;
     private Coroutine _zoomCoroutine;
 
     private void Start()
     {
+        _camera = Camera.main;
         _animator = GetComponent<Animator>();
-        _camera = GetComponentInParent<Camera>();
     }
 
-    public void AnimateAiming(bool aiming, float changedFieldOfView, float duration)
+    public void Animate(bool aiming, float changedFieldOfView, float duration)
     {
         _animator.SetBool(WeaponAnimatorConstStrings.Aiming, aiming);
 
         ManageFieldOfViewChanging(changedFieldOfView, duration);
     }
 
-    IEnumerator ChangeFieldOfView(Camera camera, float changedFieldOfView, float duration)
+    private IEnumerator ChangeFieldOfView(float changedFieldOfView, float duration)
     {
         float counter = 0;
-        float initialFieldOfView = camera.fieldOfView;
+        float initialFieldOfView = _camera.fieldOfView;
 
         while (counter < duration)
         {
             counter += Time.deltaTime;
 
             float viewTime = counter / duration;
-            camera.fieldOfView = Mathf.Lerp(initialFieldOfView, changedFieldOfView, viewTime);
+            _camera.fieldOfView = Mathf.Lerp(initialFieldOfView, changedFieldOfView, viewTime);
 
             yield return null;
         }
@@ -41,6 +42,6 @@ public class WeaponAiming : MonoBehaviour
         if (_zoomCoroutine != null)
             StopCoroutine(_zoomCoroutine);
 
-        _zoomCoroutine = StartCoroutine(ChangeFieldOfView(_camera, changedFieldOfView, duration));
+        _zoomCoroutine = StartCoroutine(ChangeFieldOfView(changedFieldOfView, duration));
     }
 }

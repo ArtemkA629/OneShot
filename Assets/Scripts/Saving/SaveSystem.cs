@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class SaveSystem
 {
-    private const string _coinsAmount = "CoinsAmount";
-    private const string _currentWeaponIndex = "CurrentWeaponIndex";
-    private const string _chosenWeaponIndex = "ChosenWeaponIndex";
-    private const string _weaponCard = "WeaponCard";
+    private const string CoinsAmount = "CoinsAmount";
+    private const string CurrentWeaponIndex = "CurrentWeaponIndex";
+    private const string ChosenWeaponIndex = "ChosenWeaponIndex";
+    private const string WeaponCard = "WeaponCard";
 
     private int _weaponItemsLength;
 
@@ -16,13 +16,13 @@ public class SaveSystem
 
     public void Save(SaveData saveData)
     {
-        PlayerPrefs.SetInt(_coinsAmount, saveData.CoinsAmount);
-        PlayerPrefs.SetInt(_currentWeaponIndex, saveData.CurrentWeaponIndex);
-        PlayerPrefs.SetInt(_chosenWeaponIndex, saveData.ChosenWeaponIndex);
+        PlayerPrefs.SetInt(CoinsAmount, saveData.CoinsAmount);
+        PlayerPrefs.SetInt(CurrentWeaponIndex, saveData.CurrentWeaponIndex);
+        PlayerPrefs.SetInt(ChosenWeaponIndex, saveData.ChosenWeaponIndex);
 
         var texts = saveData.WeaponCardTexts;
         for (int i = 0; i < texts.Length; i++)
-            PlayerPrefs.SetString(_weaponCard + i, texts[i]);
+            PlayerPrefs.SetString(WeaponCard + i, texts[i]);
     }
 
     public SaveData Load()
@@ -31,12 +31,12 @@ public class SaveSystem
 
         var weaponCardTexts = new string[_weaponItemsLength];
         for (int i = 0; i < _weaponItemsLength; i++)
-            weaponCardTexts[i] = PlayerPrefs.GetString(_weaponCard + i);
+            weaponCardTexts[i] = PlayerPrefs.GetString(WeaponCard + i);
         data.WeaponCardTexts = weaponCardTexts;
 
-        data.CurrentWeaponIndex = PlayerPrefs.GetInt(_currentWeaponIndex);
-        data.ChosenWeaponIndex = PlayerPrefs.GetInt(_chosenWeaponIndex);
-        data.CoinsAmount = PlayerPrefs.GetInt(_coinsAmount);
+        data.CurrentWeaponIndex = PlayerPrefs.GetInt(CurrentWeaponIndex);
+        data.ChosenWeaponIndex = PlayerPrefs.GetInt(ChosenWeaponIndex);
+        data.CoinsAmount = PlayerPrefs.GetInt(CoinsAmount);
 
         return data;
     }

@@ -38,7 +38,7 @@ public class GlobalDataHolder : MonoBehaviour
 
     private static void OnUnchanged(GameObject weaponModel)
     {
-        WeaponModel = weaponModel;
+        SetCurrentWeaponModel(weaponModel);
     }
 
     private static void OnCoinsAmountChanging(int amount)
