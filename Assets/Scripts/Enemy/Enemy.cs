@@ -13,21 +13,21 @@ public class Enemy : Damageable, IAttackable
     public static event Action<int> CoinsAmountChanging;
     public static event Action<Vector3> CoinViewing;
 
-    private void Awake()
+    protected override void Awake()
     {
-        base.OnAwake();
+        base.Awake();
         _animator = GetComponent<Animator>();
         _attack = GetComponent<AttackBehaviour>();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        base.Enable();
+        base.OnEnable();
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
-        base.Disable();
+        base.OnDisable();
         if (Health.Amount == MaxHealthAmount)
             return;
 

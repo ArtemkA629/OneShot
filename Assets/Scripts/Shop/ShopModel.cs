@@ -3,10 +3,10 @@ using UnityEngine;
 public class ShopModel
 {
     private ShopView _shopView;
-
     private WeaponCard[] _weaponCards;
-    private Coins _coins = new();
     private SaveData _saveData;
+
+    private readonly Coins _coins = new();
 
     public WeaponCard[] WeaponCards => _weaponCards;
     public Coins Coins => _coins;
@@ -29,7 +29,6 @@ public class ShopModel
     {
         WeaponCard.Unchanged += OnWeaponCardUnchanged;
         WeaponCard.Bought += OnWeaponBought;
-
         _coins.Changed += OnCoinsAmountChanged;
     }
 
@@ -37,9 +36,7 @@ public class ShopModel
     {
         WeaponCard.Unchanged -= OnWeaponCardUnchanged;
         WeaponCard.Bought -= OnWeaponBought;
-
         _coins.Changed -= OnCoinsAmountChanged;
-
         _saveData.SetWeaponCardTexts(_weaponCards);
     }
 
@@ -68,13 +65,12 @@ public class ShopModel
     private void SetWeaponCardsData(WeaponItem[] weaponItems)
     {
         _weaponCards = new WeaponCard[weaponItems.Length];
-        bool savingDataWasEverSaved = _saveData.WasEverSaved();
+        bool dataWasEverSaved = _saveData.WasEverSaved();
 
         for (int i = 0; i < _weaponCards.Length; i++)
         {
             _weaponCards[i] = new WeaponCard(weaponItems[i]);
-
-            if (savingDataWasEverSaved)
+            if (dataWasEverSaved)
                 _weaponCards[i].SetCurrentText(_saveData.WeaponCardTexts[i]);
         }
     }
@@ -83,7 +79,6 @@ public class ShopModel
     {
         _shopView.SetWeaponCardText(_weaponCards[_saveData.CurrentWeaponIndex].CardText);
         _weaponCards[_saveData.ChosenWeaponIndex].Unchange();
-
         _saveData.ChosenWeaponIndex = _saveData.CurrentWeaponIndex;
     }
 

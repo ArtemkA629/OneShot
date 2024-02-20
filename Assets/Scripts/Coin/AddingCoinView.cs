@@ -11,7 +11,7 @@ public class AddingCoinView : MonoBehaviour, IDespawnable
     private Image _coinImage;
     private Vector3 _finalPosition;
 
-    [Inject] private Camera _playerCamera;
+    [Inject] private readonly Camera _playerCamera;
 
     private void Start()
     {
@@ -29,9 +29,7 @@ public class AddingCoinView : MonoBehaviour, IDespawnable
         var position = gameObject.transform.position;
         position = Vector3.Lerp(position, _finalPosition, Time.deltaTime * _positionLerpSpeed);
         gameObject.transform.position = position;
-
-        _coinImage.CrossFadeAlpha(0, _crossFadeAlphaDuration, false);
-
+        _coinImage.CrossFadeAlpha(0f, _crossFadeAlphaDuration, false);
         if (position == _finalPosition)
         {
             NightPool.Despawn(this);

@@ -11,17 +11,17 @@ public class Player : Damageable, IAttackable
     private PlayerInput _playerInput;
     private Vector2 _moveDirection;
 
-    private void Awake()
+    protected override void Awake()
     {
-        base.OnAwake();
+        base.Awake();
         _playerInput = new PlayerInput();
         _playerInput.Player.Jump.performed += ctx => _movement.TryJump();
         _playerInput.Player.Attack.performed += ctx => Attack();
     }
 
-    private void OnEnable()
+    protected override void OnEnable()
     {
-        base.Enable();
+        base.OnEnable();
         _playerInput.Enable();
     }
 
@@ -32,9 +32,9 @@ public class Player : Damageable, IAttackable
         _soundPlayer.Play();
     }
 
-    private void OnDisable()
+    protected override void OnDisable()
     {
-        base.Disable();
+        base.OnDisable();
         _playerInput.Disable();
     }
 

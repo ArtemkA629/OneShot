@@ -12,18 +12,18 @@ public abstract class Damageable : MonoBehaviour
 
     public event Action Dead;
 
-    protected void OnAwake()
+    protected virtual void Awake()
     {
         _health = new Health(_maxHealthAmount);
         Debug.Log(_maxHealthAmount);
     }
 
-    protected void Enable()
+    protected virtual void OnEnable()
     {
         Dead += OnDead;
     }
 
-    protected void Disable()
+    protected virtual void OnDisable()
     {
         Dead -= OnDead;
     }
@@ -34,7 +34,6 @@ public abstract class Damageable : MonoBehaviour
             throw new ArgumentOutOfRangeException(nameof(damage));
 
         _health.SubtractAmount(damage);
-
         if (_health.Amount == 0)
             Dead?.Invoke();
     }

@@ -17,7 +17,6 @@ public class RotateCameraByInput : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-
         _playerInput = new PlayerInput();
     }
 
@@ -41,7 +40,6 @@ public class RotateCameraByInput : MonoBehaviour
     {
         _rotationX -= _lookDirection.y * _cameraSensitivity;
         _rotationX = Mathf.Clamp(_rotationX, -_maxYAngle, _maxYAngle);
-
         transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
         _playerTransform.Rotate(Vector3.up * _lookDirection.x * _cameraSensitivity);
     }

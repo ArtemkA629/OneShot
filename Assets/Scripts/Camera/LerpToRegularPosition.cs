@@ -16,9 +16,7 @@ public class LerpToRegularPosition : MonoBehaviour
     private void LateUpdate()
     {
         var position = _cashedTransform.localPosition;
-
         position = Vector3.Lerp(position, _regularCameraLocalPosition, Time.deltaTime * _positionLerpSpeed);
-
         _cashedTransform.localPosition = position;
     }
 }
