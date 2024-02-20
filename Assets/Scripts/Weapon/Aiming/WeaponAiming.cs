@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using Cinemachine;
 
 public class WeaponAiming : MonoBehaviour
 {

@@ -33,10 +33,8 @@ public class Shop : MonoBehaviour
     private void Init()
     {
         var model = new ShopModel();
-
         var view = GetComponent<ShopView>();
         view.Init(_leftButton, _rightButton);
-
         _shopController = new ShopController(model, view, _weaponItems);
     }
 

@@ -1,5 +1,7 @@
 using NTC.Pool;
+using Random = UnityEngine.Random;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class RaycastAttack : AttackBehaviour
 {
@@ -13,15 +15,17 @@ public class RaycastAttack : AttackBehaviour
     [SerializeField, Min(0f)] private float _spreadFactor = 1f;
 
     [Header("Particle System")]
-    [SerializeField] private ParticleSystem _hitEffectPrefab;
+    [SerializeField] private AssetReference _hitEffectReference;
     [SerializeField, Min(0f)] private float _hitEffectDestroyDelay = 2f;
 
     [Header("Audio")]
     [SerializeField] private AudioSource _audioSource;
-    [SerializeField] private AudioClip _audioClip;
+    [SerializeField] private AssetReference _shotAudioClipReference;
 
     private IWeaponAttackReaction _shakeCameraOnWeaponAttack;
     private ParticleSystem _muzzleEffect;
+    private GameObject _hitEffectPrefab;
+    private AudioClip _shotAudioClip;
 
     private void Start()
     {
@@ -29,6 +33,14 @@ public class RaycastAttack : AttackBehaviour
 
         _shakeCameraOnWeaponAttack = GetComponentInParent<IWeaponAttackReaction>();
         _muzzleEffect = weaponModel.MuzzleEffect;
+    }
+
+    private void OnDisable()
+    {
+        if (_hitEffectPrefab != null)
+            Addressables.Release(_hitEffectPrefab);
+        if (_shotAudioClip != null)
+            Addressables.Release(_shotAudioClip);
     }
 
     public override void PerformAttack()
@@ -58,24 +70,32 @@ public class RaycastAttack : AttackBehaviour
         }
     }
 
-    private void PerformEffects()
+    private async void PerformEffects()
     {
         if (_muzzleEffect != null)
             _muzzleEffect.Play();
 
-        if (_audioSource != null && _audioClip != null)
-            _audioSource.PlayOneShot(_audioClip);
+        if (_shotAudioClip == null)
+        {
+            var handle = await AsyncOperationsExecutor.Load<AudioClip>(_shotAudioClipReference);
+            _shotAudioClip = handle.Result;
+        }
+
+        if (_audioSource != null)
+            _audioSource.PlayOneShot(_shotAudioClip);
     }
 
-    private void SpawnParicleEffectsOnHit(RaycastHit hitInfo)
+    private async void SpawnParicleEffectsOnHit(RaycastHit hitInfo)
     {
-        if (_hitEffectPrefab != null)
+        if (_hitEffectPrefab == null)
         {
-            var hitEffectRotation = Quaternion.LookRotation(hitInfo.normal);
-            var hitEffect = NightPool.Spawn(_hitEffectPrefab, hitInfo.point, hitEffectRotation);
-
-            NightPool.Despawn(hitEffect.gameObject, _hitEffectDestroyDelay);
+            var handle = await AsyncOperationsExecutor.Load<GameObject>(_hitEffectReference);
+            _hitEffectPrefab = await handle.Task;
         }
+
+        var hitEffectRotation = Quaternion.LookRotation(hitInfo.normal);
+        var hitEffect = NightPool.Spawn(_hitEffectPrefab, hitInfo.point, hitEffectRotation);
+        NightPool.Despawn(hitEffect, _hitEffectDestroyDelay);
     }
 
     private Vector3 CalculateSpread()

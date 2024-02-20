@@ -22,6 +22,46 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b46890100828db6429ff69c322b45893
+    m_Address: Assets/ImportPackages/JMO Assets/WarFX/_Effects/Explosions/WFX_Explosion.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c5e007e5d7cd844c9d5532604e6fae5
+    m_Address: Assets/Prefabs/AddingCoinView.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4ffbf798d248ace4192d42e75b348705
+    m_Address: Assets/Prefabs/Zombie.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1338fc85579633347a3a4ecfcbbc80e8
+    m_Address: Assets/ScriptableObjects/Weapons/Weapon1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 164e4083600ac4945a0b28454fab692c
+    m_Address: Assets/ScriptableObjects/Weapons/Weapon2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e3b6b0430ad66f444b778d6bb0fa029a
+    m_Address: Assets/ScriptableObjects/Weapons/Weapon3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: be677c2cdc489b04fa578989478e5649
+    m_Address: Assets/ScriptableObjects/Weapons/Weapon4.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc7190454b9a06e408a021010336d454
+    m_Address: Assets/ScriptableObjects/Weapons/Weapon5.asset
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: d93669383edc0a44da087747ade9325b, type: 2}
   m_SchemaSet:

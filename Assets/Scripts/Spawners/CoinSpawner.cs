@@ -1,10 +1,13 @@
 using NTC.Pool;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
 
 public class CoinSpawner : Spawner
 {
     [SerializeField] private Transform _canvasParent;
-    [SerializeField] private AddingCoinView _addingCoin;
+    [SerializeField] private AssetReference _addingCoinViewReference;
+
+    private GameObject _addingCoinViewPrefab;
 
     private void OnEnable()
     {
@@ -14,11 +17,19 @@ public class CoinSpawner : Spawner
     private void OnDisable()
     {
         Enemy.CoinViewing -= OnCoinViewing;
+        Addressables.Release(_addingCoinViewPrefab);
     }
 
-    private void OnCoinViewing(Vector3 enemyPosition)
+    private async void OnCoinViewing(Vector3 enemyPosition)
     {
-        var addingCoin = NightPool.Spawn(_addingCoin, enemyPosition, Quaternion.identity, _canvasParent);
-        addingCoin.Init(enemyPosition);
+        if (_addingCoinViewPrefab == null)
+        {
+            var handle = await AsyncOperationsExecutor.Load<GameObject>(_addingCoinViewReference);
+            _addingCoinViewPrefab = await handle.Task;
+        }
+
+        var addingCoinViewComponent = _addingCoinViewPrefab.GetComponent<AddingCoinView>();
+        var addingCoinView = NightPool.Spawn(addingCoinViewComponent, enemyPosition, Quaternion.identity, _canvasParent);
+        addingCoinView.Init(enemyPosition);
     }
 }
