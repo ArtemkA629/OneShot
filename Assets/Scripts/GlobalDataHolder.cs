@@ -1,11 +1,18 @@
 using System;
 using UnityEngine;
 
-public class GlobalDataHolder : MonoBehaviour
+public static class GlobalDataHolder
 {
     public static LevelDifficulty LevelDifficulty { get; private set; }
     public static GameObject WeaponModel { get; private set; }
     public static int CoinsToAdd { get; private set; }
+
+    static GlobalDataHolder()
+    {
+        GameLoader.LevelChosen += OnLevelChosen;
+        WeaponCard.Unchanged += OnUnchanged;
+        Enemy.CoinsAmountChanging += OnCoinsAmountChanging;
+    }
 
     public static void ResetCoinsAmount()
     {
@@ -15,20 +22,6 @@ public class GlobalDataHolder : MonoBehaviour
     public static void SetCurrentWeaponModel(GameObject weaponModel)
     {
         WeaponModel = weaponModel;
-    }
-
-    private void OnEnable()
-    {
-        LevelButton.LevelChosen += OnLevelChosen;
-        WeaponCard.Unchanged += OnUnchanged;
-        Enemy.CoinsAmountChanging += OnCoinsAmountChanging;
-    }
-
-    private void OnDisable()
-    {
-        LevelButton.LevelChosen -= OnLevelChosen;
-        WeaponCard.Unchanged -= OnUnchanged;
-        Enemy.CoinsAmountChanging -= OnCoinsAmountChanging;
     }
 
     private static void OnLevelChosen(LevelDifficulty levelDifficulty)

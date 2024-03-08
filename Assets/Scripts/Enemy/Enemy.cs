@@ -6,8 +6,9 @@ public class Enemy : Damageable, IAttackable
 {
     [SerializeField] private Collider[] _enemyColliders;
     [SerializeField] private float _deathDelay = 4f;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private OverlapAttackSettings _settings;
 
-    private Animator _animator;
     private AttackBehaviour _attack;
 
     public static event Action<int> CoinsAmountChanging;
@@ -16,8 +17,7 @@ public class Enemy : Damageable, IAttackable
     protected override void Awake()
     {
         base.Awake();
-        _animator = GetComponent<Animator>();
-        _attack = GetComponent<AttackBehaviour>();
+        _attack = new OverlapAttack(_settings);
     }
 
     protected override void OnEnable()

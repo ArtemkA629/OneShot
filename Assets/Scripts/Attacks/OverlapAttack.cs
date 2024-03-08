@@ -17,12 +17,15 @@ public class OverlapAttack : AttackBehaviour
     [Header("Obstacles")]
     [SerializeField] private bool _considerObstacles;
 
-    [Header("Gizmos")]
-    [SerializeField] private DrawGizmosType _drawGizmosType;
-    [SerializeField] private Color _gizmosColor = Color.cyan;
-
     private readonly Collider[] _overlapResults = new Collider[32];
+
+    private OverlapAttackSettings _settings;
     private int _overlapResultsCount;
+
+    public OverlapAttack(OverlapAttackSettings settings)
+    {
+        _settings = settings;
+    }
 
     public override void PerformAttack()
     {
@@ -75,38 +78,4 @@ public class OverlapAttack : AttackBehaviour
             damageable.ApplyDamage(Damage);
         }
     }
-
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        TryDrawGizmos(DrawGizmosType.Always);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        TryDrawGizmos(DrawGizmosType.OnSelected);
-    }
-
-    private void TryDrawGizmos(DrawGizmosType requiredType)
-    {
-        if (_drawGizmosType != requiredType || _overlapStartPoint == null)
-            return;
-
-        Gizmos.matrix = _overlapStartPoint.localToWorldMatrix;
-        Gizmos.color = _gizmosColor;
-
-        switch (_overlapType)
-        {
-            case OverlapType.Box: 
-                Gizmos.DrawCube(_offset, _boxSize);
-                break;
-            case OverlapType.Sphere: 
-                Gizmos.DrawSphere(_offset, _sphereRadius);
-                break;
-
-            default:
-                throw new ArgumentOutOfRangeException(nameof(_overlapType));
-        }
-    }
-#endif
 }

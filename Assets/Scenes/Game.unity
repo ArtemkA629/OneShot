@@ -4145,9 +4145,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealthAmount: 100
   _gameOver: {fileID: 1120188649}
-  _attack: {fileID: 2379399937763128867}
   _movement: {fileID: 1522142593}
   _soundPlayer: {fileID: 212611968}
+  _settings:
+    _damage: 10
+    _layerMask:
+      serializedVersion: 2
+      m_Bits: 8
+    _distance: Infinity
+    _shotCount: 1
+    _useSpread: 0
+    _spreadFactor: 1
+    _hitEffectReference:
+      m_AssetGUID: b46890100828db6429ff69c322b45893
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
+    _hitEffectDestroyDelay: 2
+    _audioSource: {fileID: 2379399937763128856}
+    _shotAudioClipReference:
+      m_AssetGUID: 9e9480b4d07646942b555fd43f2a0f71
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
 --- !u!1 &1527947222
 GameObject:
   m_ObjectHideFlags: 0

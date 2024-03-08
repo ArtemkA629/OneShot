@@ -227,6 +227,21 @@ MonoBehaviour:
   - {fileID: 6387374011937854870}
   - {fileID: 333507307166162255}
   _deathDelay: 4
+  _animator: {fileID: 2290864146707809554}
+  _settings:
+    _damage: 0
+    _searchLayerMask:
+      serializedVersion: 2
+      m_Bits: 1024
+    _obstacleLayerMask:
+      serializedVersion: 2
+      m_Bits: 1
+    _overlapStartPoint: {fileID: 416387243742942786}
+    _overlapType: 1
+    _offset: {x: 0, y: 1, z: 0.7}
+    _boxSize: {x: 1, y: 1, z: 1}
+    _sphereRadius: 0.7
+    _considerObstacles: 1
 --- !u!114 &8554173684191677699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,8 +267,6 @@ MonoBehaviour:
   _boxSize: {x: 1, y: 1, z: 1}
   _sphereRadius: 0.7
   _considerObstacles: 1
-  _drawGizmosType: 0
-  _gizmosColor: {r: 0, g: 1, b: 1, a: 1}
 --- !u!1 &530658089634647505
 GameObject:
   m_ObjectHideFlags: 0

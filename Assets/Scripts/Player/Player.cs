@@ -4,17 +4,19 @@ using UnityEngine;
 public class Player : Damageable, IAttackable
 {
     [SerializeField] private GameOver _gameOver;
-    [SerializeField] private AttackBehaviour _attack;
     [SerializeField] private PlayerMovement _movement;
     [SerializeField] private FootstepsSoundPlayer _soundPlayer;
+    [SerializeField] private RaycastAttackSettings _settings;
 
     private PlayerInput _playerInput;
+    private AttackBehaviour _attack;
     private Vector2 _moveDirection;
 
     protected override void Awake()
     {
         base.Awake();
         _playerInput = new PlayerInput();
+        _attack = new RaycastAttack(_settings);
         _playerInput.Player.Jump.performed += ctx => _movement.TryJump();
         _playerInput.Player.Attack.performed += ctx => Attack();
     }

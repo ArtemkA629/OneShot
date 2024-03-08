@@ -6,20 +6,14 @@ public class WeaponCard
     private readonly Sprite _sprite;
     private readonly GameObject _model;
 
-    private readonly static string[] _cardTextVariants =
-    {
-        "Выбрано",
-        "Не выбрано"
-    };
-
     private string _cardText;
-
-    public Sprite Sprite => _sprite;
-    public GameObject Model => _model;
-    public string CardText  => _cardText;
 
     public static event Action<GameObject> Unchanged;
     public static event Action<int> Bought;
+
+    public Sprite Sprite => _sprite;
+    public GameObject Model => _model;
+    public string CardText => _cardText;
 
     public WeaponCard(WeaponItem weaponItem)
     {
@@ -83,7 +77,7 @@ public class WeaponCard
 
     private bool CardTextIsAcceptable(string cardText)
     {
-        foreach (var item in _cardTextVariants)
+        foreach (var item in UIConstantStrings.CardTextVariants)
             if (cardText.Equals(item))
                 return true;
         return int.TryParse(cardText, out _);

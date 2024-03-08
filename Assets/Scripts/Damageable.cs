@@ -7,10 +7,10 @@ public abstract class Damageable : MonoBehaviour
 
     private Health _health;
 
+    public event Action Dead;
+
     public Health Health => _health;
     public int MaxHealthAmount => _maxHealthAmount;
-
-    public event Action Dead;
 
     protected virtual void Awake()
     {

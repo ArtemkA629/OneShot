@@ -1,21 +1,32 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class CustomButton : ScriptableButton
+[RequireComponent(typeof(Button))]
+public class CustomButton : MonoBehaviour
 {
-    public Action Clicked;
+    public virtual Action Clicked { get; }
 
-    protected override void OnClick()
+    private Button _button;
+
+    private void Awake()
+    {
+        _button = GetComponent<Button>();
+        _button.onClick.AddListener(OnClick);
+    }
+
+    protected virtual void OnClick()
     {
         Clicked?.Invoke();
     }
 }
 
-public abstract class CustomButton<T> : ScriptableButton
+[RequireComponent(typeof(Button))]
+public class CustomButton<T> : CustomButton
 {
-    [SerializeField] protected T _argument;
+    public new Action<T> Clicked;
 
-    public Action<T> Clicked;
+    [SerializeField] private T _argument;
 
     protected override void OnClick()
     {

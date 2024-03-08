@@ -8,8 +8,6 @@ public class HealthView : MonoBehaviour
 
     private Health _playerHealth;
 
-    private const string _basisHealthText = "Health: ";
-
     [Inject] private readonly Player _player;
 
     private void Start()
@@ -26,6 +24,6 @@ public class HealthView : MonoBehaviour
 
     private void OnHealthChanged()
     {
-        _healthText.text = _basisHealthText + _player.Health.Amount.ToString();
+        _healthText.text = UIConstantStrings.BasisHealthText + _player.Health.Amount.ToString();
     }
 }
