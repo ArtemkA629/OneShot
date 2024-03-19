@@ -4,15 +4,15 @@ using UnityEngine;
 public class WeaponCard
 {
     private readonly Sprite _sprite;
-    private readonly GameObject _model;
+    private readonly WeaponModel _model;
 
     private string _cardText;
 
-    public static event Action<GameObject> Unchanged;
+    public static event Action<WeaponModel> Unchanged;
     public static event Action<int> Bought;
 
     public Sprite Sprite => _sprite;
-    public GameObject Model => _model;
+    public WeaponModel Model => _model;
     public string CardText => _cardText;
 
     public WeaponCard(WeaponItem weaponItem)

@@ -1,61 +1,61 @@
-using UnityEngine;
+using System;
 
-public class ShopModel
+public class ShopModel : IDisposable
 {
-    private ShopView _shopView;
-    private WeaponCard[] _weaponCards;
-    private SaveData _saveData;
-
+    private readonly ShopView _view;
+    private readonly SaveData _data;
     private readonly Coins _coins = new();
+
+    private WeaponCard[] _weaponCards;
 
     public WeaponCard[] WeaponCards => _weaponCards;
     public Coins Coins => _coins;
-    public SaveData SaveData => _saveData;
+    public SaveData Data => _data;
 
-    public void Init(SaveData saveData, ShopView shopView, WeaponItem[] weaponItems)
-    {
-        _saveData = saveData;
-        _shopView = shopView;
-
-        SetWeaponCardsData(weaponItems);
-        GlobalDataHolder.SetCurrentWeaponModel(_weaponCards[_saveData.ChosenWeaponIndex].Model);
-
-        _coins.SetAmount(_saveData.CoinsAmount);
-        _coins.AddAmount(GlobalDataHolder.CoinsToAdd);
-        GlobalDataHolder.ResetCoinsAmount();
-    }
-
-    public void OnEnable()
+    public ShopModel(SaveData data, ShopView view, WeaponItem[] weaponItems)
     {
         WeaponCard.Unchanged += OnWeaponCardUnchanged;
         WeaponCard.Bought += OnWeaponBought;
         _coins.Changed += OnCoinsAmountChanged;
+
+        _data = data;
+        _view = view;
+        Init(weaponItems);
     }
 
-    public void OnDisable()
+    public void Init(WeaponItem[] weaponItems)
+    {
+        SetWeaponCardsData(weaponItems);
+        GlobalDataHolder.SetCurrentWeaponModel(_weaponCards[_data.ChosenWeaponIndex].Model);
+        _coins.SetAmount(_data.CoinsAmount);
+        _coins.AddAmount(GlobalDataHolder.CoinsToAdd);
+        GlobalDataHolder.ResetCoinsAmount();
+    }
+
+    public void Dispose()
     {
         WeaponCard.Unchanged -= OnWeaponCardUnchanged;
         WeaponCard.Bought -= OnWeaponBought;
         _coins.Changed -= OnCoinsAmountChanged;
-        _saveData.SetWeaponCardTexts(_weaponCards);
+        _data.SetWeaponCardTexts(_weaponCards);
     }
 
     public void ChangeCardState()
     {
-        _weaponCards[_saveData.CurrentWeaponIndex].ChangeState(_coins.Amount);
+        _weaponCards[_data.CurrentWeaponIndex].ChangeState(_coins.Amount);
     }
 
     public void Scroll(ScrollButtonType clickedButton)
     {
         if (clickedButton == ScrollButtonType.Right)
-            _saveData.CurrentWeaponIndex++;
+            _data.CurrentWeaponIndex++;
         else
-            _saveData.CurrentWeaponIndex--;
+            _data.CurrentWeaponIndex--;
     }
 
     public void DeleteSavedData(WeaponItem[] weaponItems)
     {
-        _saveData.ResetIndexes();
+        _data.ResetIndexes();
         _coins.SetAmount(0);
 
         for (int i = 0; i < _weaponCards.Length; i++)
@@ -65,21 +65,21 @@ public class ShopModel
     private void SetWeaponCardsData(WeaponItem[] weaponItems)
     {
         _weaponCards = new WeaponCard[weaponItems.Length];
-        bool dataWasEverSaved = _saveData.WasEverSaved();
+        bool dataWasEverSaved = _data.WasEverSaved();
 
         for (int i = 0; i < _weaponCards.Length; i++)
         {
             _weaponCards[i] = new WeaponCard(weaponItems[i]);
             if (dataWasEverSaved)
-                _weaponCards[i].SetCurrentText(_saveData.WeaponCardTexts[i]);
+                _weaponCards[i].SetCurrentText(_data.WeaponCardTexts[i]);
         }
     }
 
-    private void OnWeaponCardUnchanged(GameObject weaponModel)
+    private void OnWeaponCardUnchanged(WeaponModel weaponModel)
     {
-        _shopView.SetWeaponCardText(_weaponCards[_saveData.CurrentWeaponIndex].CardText);
-        _weaponCards[_saveData.ChosenWeaponIndex].Unchange();
-        _saveData.ChosenWeaponIndex = _saveData.CurrentWeaponIndex;
+        _view.SetWeaponCardText(_weaponCards[_data.CurrentWeaponIndex].CardText);
+        _weaponCards[_data.ChosenWeaponIndex].Unchange();
+        _data.ChosenWeaponIndex = _data.CurrentWeaponIndex;
     }
 
     private void OnWeaponBought(int coinsToSubtract)
@@ -89,7 +89,7 @@ public class ShopModel
 
     private void OnCoinsAmountChanged()
     {
-        _shopView.SetCoinsAmount(_coins.Amount.ToString());
-        _saveData.CoinsAmount = _coins.Amount;
+        _view.SetCoinsAmount(_coins.Amount.ToString());
+        _data.CoinsAmount = _coins.Amount;
     }
 }

@@ -20,4 +20,14 @@ public class OverlapAttackSettings
 
     [Header("Obstacles")]
     [SerializeField] private bool _considerObstacles;
+
+    public int Damage => _damage;
+    public LayerMask SearchLayerMask => _searchLayerMask;
+    public LayerMask ObstacleLayerMask => _obstacleLayerMask;
+    public Transform OverlapStartPoint => _overlapStartPoint;
+    public OverlapType OverlapType => _overlapType;
+    public Vector3 Offset => _offset;
+    public Vector3 BoxSize => _boxSize;
+    public float SphereRadius => _sphereRadius;
+    public bool ConsiderObstacles => _considerObstacles;
 }

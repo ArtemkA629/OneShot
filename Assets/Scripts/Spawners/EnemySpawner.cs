@@ -2,7 +2,7 @@ using NTC.Pool;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class EnemySpawner : Spawner
+public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private AssetReference _enemyReference;
     [SerializeField] private float _spawnRange;

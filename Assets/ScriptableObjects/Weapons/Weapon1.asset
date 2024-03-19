@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Weapon1
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: 56b3d0cb6c2601643ac02836358aa8c3, type: 3}
-  _model: {fileID: 2882534440730837854, guid: 642b90524e54cfa4ea7df0f121558e65, type: 3}
+  _model: {fileID: 3436786581102042216, guid: 642b90524e54cfa4ea7df0f121558e65, type: 3}
   _cardTextAtStart: "\u0412\u044B\u0431\u0440\u0430\u043D\u043E"

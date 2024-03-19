@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class DataDeletionButtonCreator : MonoBehaviour
+public class DataDeletion : MonoBehaviour
 {
     public event Action ButtonClicked;
 

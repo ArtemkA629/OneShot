@@ -4,7 +4,7 @@ using UnityEngine;
 public static class GlobalDataHolder
 {
     public static LevelDifficulty LevelDifficulty { get; private set; }
-    public static GameObject WeaponModel { get; private set; }
+    public static WeaponModel WeaponModel { get; private set; }
     public static int CoinsToAdd { get; private set; }
 
     static GlobalDataHolder()
@@ -19,7 +19,7 @@ public static class GlobalDataHolder
         CoinsToAdd = 0;
     }
 
-    public static void SetCurrentWeaponModel(GameObject weaponModel)
+    public static void SetCurrentWeaponModel(WeaponModel weaponModel)
     {
         WeaponModel = weaponModel;
     }
@@ -29,7 +29,7 @@ public static class GlobalDataHolder
         LevelDifficulty = levelDifficulty;
     }
 
-    private static void OnUnchanged(GameObject weaponModel)
+    private static void OnUnchanged(WeaponModel weaponModel)
     {
         SetCurrentWeaponModel(weaponModel);
     }

@@ -1,4 +1,4 @@
-interface IWeaponAttackReaction
+public interface IWeaponAttackReaction
 {
     public void ReactOnAttack();
 }

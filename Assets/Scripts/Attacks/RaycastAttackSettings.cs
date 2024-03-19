@@ -24,4 +24,16 @@ public class RaycastAttackSettings
     [Header("Audio")]
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AssetReference _shotAudioClipReference;
+
+    public int Damage => _damage;
+    public LayerMask LayerMask => _layerMask;
+    public float Distance => _distance;
+    public int ShotCount => _shotCount;
+
+    public bool UseSpread => _useSpread;
+    public float SpreadFactor => _spreadFactor;
+    public AssetReference HitEffectReference => _hitEffectReference;
+    public float HitEffectDestroyDelay => _hitEffectDestroyDelay;
+    public AudioSource AudioSource => _audioSource;
+    public AssetReference ShotAudioClipReference => _shotAudioClipReference;
 }

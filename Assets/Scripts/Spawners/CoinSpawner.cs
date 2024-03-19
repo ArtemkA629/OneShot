@@ -2,7 +2,7 @@ using NTC.Pool;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
-public class CoinSpawner : Spawner
+public class CoinSpawner : MonoBehaviour
 {
     [SerializeField] private Transform _canvasParent;
     [SerializeField] private AssetReference _addingCoinViewReference;

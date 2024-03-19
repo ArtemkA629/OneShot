@@ -107,7 +107,6 @@ GameObject:
   - component: {fileID: 4442474475229809504}
   - component: {fileID: 3606891814960852582}
   - component: {fileID: 8837849029691185088}
-  - component: {fileID: 8554173684191677699}
   m_Layer: 3
   m_Name: Zombie
   m_TagString: Untagged
@@ -229,7 +228,7 @@ MonoBehaviour:
   _deathDelay: 4
   _animator: {fileID: 2290864146707809554}
   _settings:
-    _damage: 0
+    _damage: 10
     _searchLayerMask:
       serializedVersion: 2
       m_Bits: 1024
@@ -242,31 +241,6 @@ MonoBehaviour:
     _boxSize: {x: 1, y: 1, z: 1}
     _sphereRadius: 0.7
     _considerObstacles: 1
---- !u!114 &8554173684191677699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 524877892791659782}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0bcee13dc461a54ea40b8f7a40b08b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 10
-  _searchLayerMask:
-    serializedVersion: 2
-    m_Bits: 1024
-  _obstacleLayerMask:
-    serializedVersion: 2
-    m_Bits: 1
-  _overlapStartPoint: {fileID: 416387243742942786}
-  _overlapType: 1
-  _offset: {x: 0, y: 1, z: 0.7}
-  _boxSize: {x: 1, y: 1, z: 1}
-  _sphereRadius: 0.7
-  _considerObstacles: 1
 --- !u!1 &530658089634647505
 GameObject:
   m_ObjectHideFlags: 0

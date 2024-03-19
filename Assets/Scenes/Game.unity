@@ -254,7 +254,6 @@ Transform:
   m_Children:
   - {fileID: 409463581}
   - {fileID: 1447628041}
-  - {fileID: 1113458973}
   - {fileID: 893107681}
   m_Father: {fileID: 1622781911}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -274,7 +273,6 @@ MonoBehaviour:
   _monoInstallers:
   - {fileID: 409463582}
   - {fileID: 1447628042}
-  - {fileID: 1113458974}
   - {fileID: 893107682}
   _installerPrefabs: []
   _autoRun: 1
@@ -2812,7 +2810,7 @@ GameObject:
   - component: {fileID: 989109755}
   - component: {fileID: 989109756}
   m_Layer: 0
-  m_Name: WeaponModelChanger
+  m_Name: WeaponModelSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2826,12 +2824,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989109754}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.000000059604638, y: 0.000000010536712, z: 0.00000001053671,
+    w: 1}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2379399937763128851}
+  m_Father: {fileID: 1765089125}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &989109756
 MonoBehaviour:
@@ -3006,51 +3005,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1113458972
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1113458973}
-  - component: {fileID: 1113458974}
-  m_Layer: 0
-  m_Name: EnemySpawnerInstaller
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!4 &1113458973
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113458972}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 39106073}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1113458974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1113458972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d92e9f999444a2147bfb9dc497a27912, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemySpawnerUnit: {fileID: 1529584717}
 --- !u!1 &1120188646
 GameObject:
   m_ObjectHideFlags: 0
@@ -3853,7 +3807,7 @@ GameObject:
   - component: {fileID: 1447628041}
   - component: {fileID: 1447628042}
   m_Layer: 0
-  m_Name: CoinSpawnerInstaller
+  m_Name: SpawnerInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3887,6 +3841,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinSpawnerUnit: {fileID: 1379876678}
+  _enemySpawnerUnit: {fileID: 1529584717}
+  _weaponModelSpawnerUnit: {fileID: 989109756}
 --- !u!1 &1477255036
 GameObject:
   m_ObjectHideFlags: 0
@@ -4147,6 +4103,8 @@ MonoBehaviour:
   _gameOver: {fileID: 1120188649}
   _movement: {fileID: 1522142593}
   _soundPlayer: {fileID: 212611968}
+  _weaponModelChanger: {fileID: 989109756}
+  _shakeCameraOnWeaponAttack: {fileID: 1340909553}
   _settings:
     _damage: 10
     _layerMask:
@@ -4891,6 +4849,7 @@ Transform:
   m_Children:
   - {fileID: 1529584718}
   - {fileID: 1379876677}
+  - {fileID: 989109755}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1781211856
@@ -5423,7 +5382,6 @@ GameObject:
   - component: {fileID: 2379399937763128851}
   - component: {fileID: 2379399937763128854}
   - component: {fileID: 2379399937763128862}
-  - component: {fileID: 2379399937763128867}
   - component: {fileID: 2379399937763128856}
   - component: {fileID: 2379399937763128864}
   - component: {fileID: 2379399937763128866}
@@ -5447,8 +5405,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 989109755}
+  m_Children: []
   m_Father: {fileID: 1340909550}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2379399937763128854
@@ -5611,38 +5568,6 @@ MonoBehaviour:
   _initialFieldOfView: 60
   _changedFieldOfView: 50
   _duration: 0.3
---- !u!114 &2379399937763128867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2379399937762961971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2939f2e46de5f7b4bae748cff6346b68, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 10
-  _layerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  _distance: Infinity
-  _shotCount: 1
-  _useSpread: 0
-  _spreadFactor: 1
-  _hitEffectReference:
-    m_AssetGUID: b46890100828db6429ff69c322b45893
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  _hitEffectDestroyDelay: 2
-  _audioSource: {fileID: 2379399937763128856}
-  _shotAudioClipReference:
-    m_AssetGUID: 9e9480b4d07646942b555fd43f2a0f71
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

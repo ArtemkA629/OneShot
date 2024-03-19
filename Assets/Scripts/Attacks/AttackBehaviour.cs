@@ -1,11 +1,9 @@
+using System;
 using UnityEngine;
 
-public abstract class AttackBehaviour : MonoBehaviour
+public abstract class AttackBehaviour : IDisposable
 {
-    [Header("Damage")]
-    [SerializeField] private int _damage;
-
-    public int Damage => _damage;
-
-    public abstract void PerformAttack();
+    public virtual void PerformAttack() { }
+    public virtual void PerformAttack(Transform transform) { }
+    public virtual void Dispose() { }
 }

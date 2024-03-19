@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class Shop : MonoBehaviour
 {
-    [Header("WeaponItems")]
     [SerializeField] private WeaponItem[] _weaponItems;
-
-    [Header("Buttons")]
     [SerializeField] private ScrollButton _rightButton;
     [SerializeField] private ScrollButton _leftButton;
-    [SerializeField] private DataDeletionButtonCreator _dataDeletionButtonCreator;
+    [SerializeField] private DataDeletion _dataDeletionButtonCreator;
+    [SerializeField] private ShopView _view;
 
     private ShopController _shopController;
+    private ShopModel _model;
+    private SaveSystem _saveSystem;
 
     private void OnEnable()
     {
@@ -26,16 +26,17 @@ public class Shop : MonoBehaviour
         _rightButton.Clicked -= OnScrollButtonClicked;
         _leftButton.Clicked -= OnScrollButtonClicked;
         _dataDeletionButtonCreator.ButtonClicked -= OnDataDeletionButtonClicked;
-
-        _shopController.OnDisable();
+        _model.Dispose();
+        _shopController.Dispose();
     }
 
     private void Init()
     {
-        var model = new ShopModel();
-        var view = GetComponent<ShopView>();
-        view.Init(_leftButton, _rightButton);
-        _shopController = new ShopController(model, view, _weaponItems);
+        _view.Init(_leftButton, _rightButton);
+        _saveSystem = new SaveSystem(_weaponItems.Length);
+        var saveData = _saveSystem.Load();
+        _model = new ShopModel(saveData, _view, _weaponItems);
+        _shopController = new ShopController(_model, _view, _saveSystem);
     }
 
     public void ClickOnCard()

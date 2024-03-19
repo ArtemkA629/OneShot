@@ -3,23 +3,9 @@ using UnityEngine;
 
 public class OverlapAttack : AttackBehaviour
 {
-    [Header("Masks")]
-    [SerializeField] private LayerMask _searchLayerMask;
-    [SerializeField] private LayerMask _obstacleLayerMask;
-
-    [Header("Overlap Area")]
-    [SerializeField] private Transform _overlapStartPoint;
-    [SerializeField] private OverlapType _overlapType;
-    [SerializeField] private Vector3 _offset;
-    [SerializeField] private Vector3 _boxSize = Vector3.one;
-    [SerializeField, Min(0f)] private float _sphereRadius = 1f;
-
-    [Header("Obstacles")]
-    [SerializeField] private bool _considerObstacles;
-
     private readonly Collider[] _overlapResults = new Collider[32];
+    private readonly OverlapAttackSettings _settings;
 
-    private OverlapAttackSettings _settings;
     private int _overlapResultsCount;
 
     public OverlapAttack(OverlapAttackSettings settings)
@@ -35,13 +21,13 @@ public class OverlapAttack : AttackBehaviour
 
     private bool TryFindEnemies()
     {
-        var position = _overlapStartPoint.TransformPoint(_offset);
+        var position = _settings.OverlapStartPoint.TransformPoint(_settings.Offset);
 
-        _overlapResultsCount = _overlapType switch
+        _overlapResultsCount = _settings.OverlapType switch
         {
             OverlapType.Box => OverlapBox(position),
             OverlapType.Sphere => OverlapSphere(position),
-            _ => throw new ArgumentOutOfRangeException(nameof(_overlapType))
+            _ => throw new ArgumentOutOfRangeException(nameof(_settings.OverlapType))
         };
 
         return _overlapResultsCount > 0;                                                                                                                                                                                                      
@@ -49,13 +35,13 @@ public class OverlapAttack : AttackBehaviour
 
     private int OverlapBox(Vector3 position)
     {
-        return Physics.OverlapBoxNonAlloc(position, _boxSize / 2, _overlapResults, 
-            _overlapStartPoint.rotation, _searchLayerMask.value);
+        return Physics.OverlapBoxNonAlloc(position, _settings.BoxSize / 2, _overlapResults,
+            _settings.OverlapStartPoint.rotation, _settings.SearchLayerMask.value);
     }
 
     private int OverlapSphere(Vector3 position)
     {
-        return Physics.OverlapSphereNonAlloc(position, _sphereRadius, _overlapResults, _searchLayerMask.value);
+        return Physics.OverlapSphereNonAlloc(position, _settings.SphereRadius, _overlapResults, _settings.SearchLayerMask.value);
     }
 
     private void TryAttackEnemies()
@@ -65,17 +51,17 @@ public class OverlapAttack : AttackBehaviour
             if (_overlapResults[i].TryGetComponent(out Damageable damageable) == false)
                 continue;
 
-            if (_considerObstacles)
+            if (_settings.ConsiderObstacles)
             {
-                var startPointPosition = _overlapStartPoint.position;
+                var startPointPosition = _settings.OverlapStartPoint.position;
                 var colliderPosition = _overlapResults[i].transform.position;
-                var hasObstacle = Physics.Linecast(startPointPosition, colliderPosition, _obstacleLayerMask.value);
+                var hasObstacle = Physics.Linecast(startPointPosition, colliderPosition, _settings.ObstacleLayerMask.value);
 
                 if (hasObstacle)
                     continue;
             }
 
-            damageable.ApplyDamage(Damage);
+            damageable.ApplyDamage(_settings.Damage);
         }
     }
 }

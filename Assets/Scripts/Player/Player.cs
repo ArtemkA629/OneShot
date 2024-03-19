@@ -6,17 +6,21 @@ public class Player : Damageable, IAttackable
     [SerializeField] private GameOver _gameOver;
     [SerializeField] private PlayerMovement _movement;
     [SerializeField] private FootstepsSoundPlayer _soundPlayer;
+    [SerializeField] private WeaponModelSpawner _weaponModelChanger;
+    [SerializeField] private ShakeCameraOnWeaponAttack _shakeCameraOnWeaponAttack;
     [SerializeField] private RaycastAttackSettings _settings;
 
     private PlayerInput _playerInput;
     private AttackBehaviour _attack;
     private Vector2 _moveDirection;
+    private WeaponModel _weaponModel;
+
+    private WeaponModel WeaponModel { set { if (value.TryGetComponent(out WeaponModel _)) _weaponModel = value; } }
 
     protected override void Awake()
     {
         base.Awake();
         _playerInput = new PlayerInput();
-        _attack = new RaycastAttack(_settings);
         _playerInput.Player.Jump.performed += ctx => _movement.TryJump();
         _playerInput.Player.Attack.performed += ctx => Attack();
     }
@@ -38,6 +42,18 @@ public class Player : Damageable, IAttackable
     {
         base.OnDisable();
         _playerInput.Disable();
+        _attack.Dispose();
+    }
+
+    public void Attack()
+    {
+        _attack.PerformAttack(transform);
+    }
+
+    public void SetModel(WeaponModel weaponModel)
+    {
+        WeaponModel = weaponModel;
+        SetAttack();
     }
 
     protected override void OnDead()
@@ -45,8 +61,9 @@ public class Player : Damageable, IAttackable
         _gameOver.Stop();
     }
 
-    public void Attack()
+    private void SetAttack()
     {
-        _attack.PerformAttack();
+        var effect = _weaponModel.MuzzleEffect;
+        _attack = new RaycastAttack(_settings, effect, _shakeCameraOnWeaponAttack);
     }
 }

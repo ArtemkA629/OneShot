@@ -17,7 +17,7 @@ public class GameLoader : MonoBehaviour
     private void OnDisable()
     {
         foreach (var button in _buttons)
-            button.Clicked += OnLevelButtonClicked;
+            button.Clicked -= OnLevelButtonClicked;
     }
 
     private void OnLevelButtonClicked(LevelDifficulty levelDifficulty)

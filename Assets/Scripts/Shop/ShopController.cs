@@ -1,27 +1,24 @@
-public class ShopController
+using System;
+using UnityEngine;
+
+public class ShopController : IDisposable
 {
-    private ShopModel _model;
-    private ShopView _view;
+    private readonly ShopModel _model;
+    private readonly ShopView _view;
+    private readonly SaveSystem _saveSystem;
 
-    private SaveSystem _saveSystem;
-
-    public ShopController(ShopModel model, ShopView view, WeaponItem[] weaponItems)
+    public ShopController(ShopModel model, ShopView view, SaveSystem saveSystem)
     {
-        _saveSystem = new SaveSystem(weaponItems.Length);
-        var saveData = _saveSystem.Load();
-
         _model = model;
-        _model.OnEnable();
-        _model.Init(saveData, view, weaponItems);
-
         _view = view;
-        SetView(saveData);
+        SetView(_model.Data);
+        _saveSystem = saveSystem;
     }
     
-    public void OnDisable()
+    public void Dispose()
     {
-        _model.OnDisable();
-        _saveSystem.Save(_model.SaveData);
+        _saveSystem.Save(_model.Data);
+        Debug.Log("Сохраняется");
     }
 
     public void OnCardClicked()
@@ -32,7 +29,7 @@ public class ShopController
     public void OnScroll(ScrollButtonType clickedButton)
     {
         _model.Scroll(clickedButton);
-        SetView(_model.SaveData);
+        SetView(_model.Data);
     }
 
     public void OnDeleteSavedData(WeaponItem[] weaponItems)
