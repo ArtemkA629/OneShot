@@ -37,7 +37,7 @@ MonoBehaviour:
     _warnings: 0
   - _name: ExplosionUnits
     _enabled: 1
-    _prefab: {fileID: 100008, guid: 7075bd5fe1480184695a32611c15da57, type: 3}
+    _prefab: {fileID: 100004, guid: b46890100828db6429ff69c322b45893, type: 3}
     _behaviourOnCapacityReached: 2
     _despawnType: 2
     _callbacksType: 0

@@ -2,7 +2,6 @@ using NTC.Pool;
 using System;
 using Random = UnityEngine.Random;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
 
 public class RaycastAttack : AttackBehaviour, IDisposable
 {
@@ -10,22 +9,11 @@ public class RaycastAttack : AttackBehaviour, IDisposable
     private readonly IWeaponAttackReaction _shakeCameraOnWeaponAttack;
     private readonly ParticleSystem _muzzleEffect;
 
-    private GameObject _hitEffectPrefab;
-    private AudioClip _shotAudioClip;
-
     public RaycastAttack(RaycastAttackSettings settings, ParticleSystem effect, IWeaponAttackReaction reaction)
     {
         _settings = settings;
         _muzzleEffect = effect;
         _shakeCameraOnWeaponAttack = reaction;
-    }
-
-    public override void Dispose()
-    {
-        if (_hitEffectPrefab != null)
-            Addressables.Release(_hitEffectPrefab);
-        if (_shotAudioClip != null)
-            Addressables.Release(_shotAudioClip);
     }
 
     public override void PerformAttack(Transform transform)
@@ -55,31 +43,19 @@ public class RaycastAttack : AttackBehaviour, IDisposable
         }
     }
 
-    private async void PerformEffects()
+    private void PerformEffects()
     {
         if (_muzzleEffect != null)
             _muzzleEffect.Play();
 
-        if (_shotAudioClip == null)
-        {
-            var handle = await AsyncOperationsExecutor.Load<AudioClip>(_settings.ShotAudioClipReference);
-            _shotAudioClip = handle.Result;
-        }
-
         if (_settings.AudioSource != null)
-            _settings.AudioSource.PlayOneShot(_shotAudioClip);
+            _settings.AudioSource.PlayOneShot(_settings.ShotAudioClip);
     }
 
-    private async void SpawnParicleEffectsOnHit(RaycastHit hitInfo)
+    private void SpawnParicleEffectsOnHit(RaycastHit hitInfo)
     {
-        if (_hitEffectPrefab == null)
-        {
-            var handle = await AsyncOperationsExecutor.Load<GameObject>(_settings.HitEffectReference);
-            _hitEffectPrefab = await handle.Task;
-        }
-
         var hitEffectRotation = Quaternion.LookRotation(hitInfo.normal);
-        var hitEffect = NightPool.Spawn(_hitEffectPrefab, hitInfo.point, hitEffectRotation);
+        var hitEffect = NightPool.Spawn(_settings.HitEffect, hitInfo.point, hitEffectRotation);
         NightPool.Despawn(hitEffect, _settings.HitEffectDestroyDelay);
     }
 
