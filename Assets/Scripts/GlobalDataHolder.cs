@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 public static class GlobalDataHolder
 {
@@ -12,6 +11,12 @@ public static class GlobalDataHolder
         GameLoader.LevelChosen += OnLevelChosen;
         WeaponCard.Unchanged += OnUnchanged;
         Enemy.CoinsAmountChanging += OnCoinsAmountChanging;
+    }
+
+    public static void UpdateGlobalData(WeaponModel weaponModel)
+    {
+        SetCurrentWeaponModel(weaponModel);
+        ResetCoinsAmount();
     }
 
     public static void ResetCoinsAmount()

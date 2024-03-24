@@ -3,54 +3,42 @@ using UnityEngine;
 public class Shop : MonoBehaviour
 {
     [SerializeField] private WeaponItem[] _weaponItems;
-    [SerializeField] private ScrollButton _rightButton;
-    [SerializeField] private ScrollButton _leftButton;
-    [SerializeField] private DataDeletion _dataDeletionButtonCreator;
-    [SerializeField] private ShopView _view;
+    [SerializeField] private DataDeletion _dataDeletion;
+    [SerializeField] private WeaponCardsView _weaponCardsView;
+    [SerializeField] private CoinsView _coinsView;
+    [SerializeField] private ScrollButtonsView _buttonsView;
 
-    private ShopController _shopController;
-    private ShopModel _model;
+    private ShopPresenter _presenter;
     private SaveSystem _saveSystem;
+    private SaveData _saveData;
 
     private void OnEnable()
     {
-        _rightButton.Clicked += OnScrollButtonClicked;
-        _leftButton.Clicked += OnScrollButtonClicked;
-        _dataDeletionButtonCreator.ButtonClicked += OnDataDeletionButtonClicked;
-
+        _dataDeletion.ButtonClicked += OnDataDeleted;
         Init();
     }
 
     private void OnDisable()
     {
-        _rightButton.Clicked -= OnScrollButtonClicked;
-        _leftButton.Clicked -= OnScrollButtonClicked;
-        _dataDeletionButtonCreator.ButtonClicked -= OnDataDeletionButtonClicked;
-        _model.Dispose();
-        _shopController.Dispose();
+        _dataDeletion.ButtonClicked -= OnDataDeleted;
+        _presenter.Dispose();
+        _saveSystem.Save(_saveData);
     }
 
     private void Init()
     {
-        _view.Init(_leftButton, _rightButton);
         _saveSystem = new SaveSystem(_weaponItems.Length);
-        var saveData = _saveSystem.Load();
-        _model = new ShopModel(saveData, _view, _weaponItems);
-        _shopController = new ShopController(_model, _view, _saveSystem);
+        _saveData = _saveSystem.Load();
+        var weaponCardsModel = new WeaponCardsModel(_saveData, _weaponCardsView, _weaponItems);
+        var coinsModel = new CoinsModel(_saveData, _coinsView);
+        var scrollButtonsModel = new ScrollButtonsModel(_saveData, _buttonsView);
+        _presenter = new ShopPresenter(weaponCardsModel, coinsModel, scrollButtonsModel);
+        _weaponCardsView.Init(_presenter);
+        _buttonsView.Init(_presenter);
     }
 
-    public void ClickOnCard()
+    private void OnDataDeleted()
     {
-        _shopController.OnCardClicked();
-    }
-
-    private void OnScrollButtonClicked(ScrollButtonType clickedButton)
-    {
-        _shopController.OnScroll(clickedButton);
-    }
-
-    private void OnDataDeletionButtonClicked()
-    {
-        _shopController.OnDeleteSavedData(_weaponItems);
+        _presenter.OnDeleteSavedData(_weaponItems);
     }
 }
