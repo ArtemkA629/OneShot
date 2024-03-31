@@ -8,7 +8,7 @@ public class OverlapAttack : AttackBehaviour
 
     private int _overlapResultsCount;
 
-    public OverlapAttack(OverlapAttackSettings settings)
+    public OverlapAttack(int damage, OverlapAttackSettings settings) : base(damage)
     {
         _settings = settings;
     }
@@ -61,7 +61,7 @@ public class OverlapAttack : AttackBehaviour
                     continue;
             }
 
-            damageable.ApplyDamage(_settings.Damage);
+            damageable.ApplyDamage(Damage);
         }
     }
 }

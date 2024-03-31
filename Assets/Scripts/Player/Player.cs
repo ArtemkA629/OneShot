@@ -1,13 +1,10 @@
+using System;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerMovement))]
 public class Player : Damageable, IAttackable
 {
-    [SerializeField] private GameOver _gameOver;
-    [SerializeField] private PlayerMovement _movement;
     [SerializeField] private FootstepsSoundPlayer _soundPlayer;
-    [SerializeField] private WeaponModelSpawner _weaponModelChanger;
-    [SerializeField] private ShakeCameraOnWeaponAttack _shakeCameraOnWeaponAttack;
+    [SerializeField] private PlayerMovement _movement;
     [SerializeField] private RaycastAttackSettings _settings;
 
     private PlayerInput _playerInput;
@@ -15,7 +12,7 @@ public class Player : Damageable, IAttackable
     private Vector2 _moveDirection;
     private WeaponModel _weaponModel;
 
-    private WeaponModel WeaponModel { set { if (value.TryGetComponent(out WeaponModel _)) _weaponModel = value; } }
+    public event Action GameOver;
 
     protected override void Awake()
     {
@@ -34,7 +31,7 @@ public class Player : Damageable, IAttackable
     private void Update()
     {
         _moveDirection = _playerInput.Player.Move.ReadValue<Vector2>();                                                     
-        _movement.Move(_moveDirection);
+        _movement.Move(_moveDirection, transform);
         _soundPlayer.Play();
     }
 
@@ -52,18 +49,18 @@ public class Player : Damageable, IAttackable
 
     public void SetModel(WeaponModel weaponModel)
     {
-        WeaponModel = weaponModel;
+        _weaponModel = weaponModel;
         SetAttack();
     }
 
     protected override void OnDead()
     {
-        _gameOver.Stop();
+        GameOver?.Invoke();
     }
 
     private void SetAttack()
     {
-        var effect = _weaponModel.MuzzleEffect;
-        _attack = new RaycastAttack(_settings, effect, _shakeCameraOnWeaponAttack);
+        var damage = _weaponModel.Damage;
+        _attack = new RaycastAttack(damage, _settings, _weaponModel);
     }
 }

@@ -3,20 +3,19 @@ using UnityEngine;
 
 public class WeaponAiming : MonoBehaviour
 {
+    [SerializeField] private Animator _animator;
+
     private Camera _camera;
-    private Animator _animator;
     private Coroutine _zoomCoroutine;
 
-    private void Start()
+    private void Awake()
     {
         _camera = Camera.main;
-        _animator = GetComponent<Animator>();
     }
 
     public void Animate(bool aiming, float changedFieldOfView, float duration)
     {
         _animator.SetBool(WeaponAnimatorConstStrings.Aiming, aiming);
-
         ManageFieldOfViewChanging(changedFieldOfView, duration);
     }
 
@@ -24,14 +23,11 @@ public class WeaponAiming : MonoBehaviour
     {
         float counter = 0;
         float initialFieldOfView = _camera.fieldOfView;
-
         while (counter < duration)
         {
             counter += Time.deltaTime;
-
             float viewTime = counter / duration;
             _camera.fieldOfView = Mathf.Lerp(initialFieldOfView, changedFieldOfView, viewTime);
-
             yield return null;
         }
     }
@@ -40,7 +36,6 @@ public class WeaponAiming : MonoBehaviour
     {
         if (_zoomCoroutine != null)
             StopCoroutine(_zoomCoroutine);
-
         _zoomCoroutine = StartCoroutine(ChangeFieldOfView(changedFieldOfView, duration));
     }
 }

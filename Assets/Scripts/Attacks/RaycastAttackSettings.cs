@@ -4,9 +4,6 @@ using UnityEngine;
 [Serializable]
 public class RaycastAttackSettings
 {
-    [Header("Damage")]
-    [SerializeField] private int _damage;
-
     [Header("Ray")]
     [SerializeField] private LayerMask _layerMask;
     [SerializeField, Min(0f)] private float _distance = Mathf.Infinity;
@@ -24,7 +21,9 @@ public class RaycastAttackSettings
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _shotAudioClip;
 
-    public int Damage => _damage;
+    [Header("Reactions")]
+    [SerializeField] private ShakeCameraOnWeaponAttack _shakeCameraOnWeaponAttack;
+
     public LayerMask LayerMask => _layerMask;
     public float Distance => _distance;
     public int ShotCount => _shotCount;
@@ -34,4 +33,5 @@ public class RaycastAttackSettings
     public float HitEffectDestroyDelay => _hitEffectDestroyDelay;
     public AudioSource AudioSource => _audioSource;
     public AudioClip ShotAudioClip => _shotAudioClip;
+    public ShakeCameraOnWeaponAttack ShakeCameraOnWeaponAttack => _shakeCameraOnWeaponAttack;
 }

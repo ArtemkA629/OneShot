@@ -6,7 +6,7 @@ public class EnemyHand : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.TryGetComponent(out Player player))
+        if (collision.collider.TryGetComponent(out Player _))
             _enemy.Attack();
     }
 }

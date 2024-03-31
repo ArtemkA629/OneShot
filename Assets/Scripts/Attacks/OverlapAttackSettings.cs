@@ -4,9 +4,6 @@ using UnityEngine;
 [Serializable]
 public class OverlapAttackSettings
 {
-    [Header("Damage")]
-    [SerializeField] private int _damage;
-
     [Header("Masks")]
     [SerializeField] private LayerMask _searchLayerMask;
     [SerializeField] private LayerMask _obstacleLayerMask;
@@ -21,7 +18,6 @@ public class OverlapAttackSettings
     [Header("Obstacles")]
     [SerializeField] private bool _considerObstacles;
 
-    public int Damage => _damage;
     public LayerMask SearchLayerMask => _searchLayerMask;
     public LayerMask ObstacleLayerMask => _obstacleLayerMask;
     public Transform OverlapStartPoint => _overlapStartPoint;

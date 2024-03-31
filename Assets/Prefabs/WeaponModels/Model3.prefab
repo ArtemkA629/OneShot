@@ -141,6 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _muzzleEffect: {fileID: 4151964986536766173}
+  _damage: 10
 --- !u!1001 &4357100770666094591
 PrefabInstance:
   m_ObjectHideFlags: 0

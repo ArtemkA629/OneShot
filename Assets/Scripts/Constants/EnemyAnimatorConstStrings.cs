@@ -1,6 +1,5 @@
-public static class EnemyAnimatorConstants
+public static class EnemyAnimatorConstStrings
 {
     public const string Attacking = "Attacking";
     public const string Dead = "Dead";
-    public const float AttackRange = 1.75f;
 }

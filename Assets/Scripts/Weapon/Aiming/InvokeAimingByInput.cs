@@ -1,17 +1,17 @@
 using UnityEngine;
 
+[RequireComponent(typeof(WeaponAiming))]
 public class InvokeAimingByInput : MonoBehaviour
 {
+    [SerializeField] private WeaponAiming _weaponAiming;
     [SerializeField, Min(0f)] private float _initialFieldOfView = 60f;
     [SerializeField, Min(0f)] private float _changedFieldOfView = 50f;
     [SerializeField, Min(0f)] private float _duration = 0.3f;
 
-    private WeaponAiming _weaponAiming;
     private PlayerInput _playerInput;
 
     private void Awake()
     {
-        _weaponAiming = GetComponent<WeaponAiming>();
         _playerInput = new PlayerInput();
     }
 
@@ -22,9 +22,10 @@ public class InvokeAimingByInput : MonoBehaviour
 
     private void Update()
     {
-        if (_playerInput.Weapon.Aim.WasPressedThisFrame())
+        var aim = _playerInput.Weapon.Aim;
+        if (aim.WasPressedThisFrame())
             _weaponAiming.Animate(true, _changedFieldOfView, _duration);
-        if (_playerInput.Weapon.Aim.WasReleasedThisFrame())
+        if (aim.WasReleasedThisFrame())
             _weaponAiming.Animate(false, _initialFieldOfView, _duration);
     }
 

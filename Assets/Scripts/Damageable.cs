@@ -33,7 +33,7 @@ public abstract class Damageable : MonoBehaviour
         if (damage < 0)
             throw new ArgumentOutOfRangeException(nameof(damage));
 
-        _health.SubtractAmount(damage);
+        _health.ApplyDamage(damage);
         if (_health.Amount == 0)
             Dead?.Invoke();
     }

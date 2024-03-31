@@ -117,19 +117,19 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Dead
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   - m_Name: Walking
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -155,6 +155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5599a146db78c0842967b72f6fac1763, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyPrefab: {fileID: 8837849029691185088, guid: 4ffbf798d248ace4192d42e75b348705,
+    type: 3}
 --- !u!114 &3198114083391377777
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -167,6 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1426d827e12d345925ab77ccf06aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyPrefab: {fileID: 8837849029691185088, guid: 4ffbf798d248ace4192d42e75b348705,
+    type: 3}
 --- !u!1102 &3440504774186400690
 AnimatorState:
   serializedVersion: 6

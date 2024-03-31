@@ -716,7 +716,7 @@ GameObject:
   - component: {fileID: 179473232}
   - component: {fileID: 179473231}
   - component: {fileID: 179473230}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3051,7 +3051,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameOverPanel: {fileID: 305590231}
   _inputScripts:
-  - {fileID: 1522142593}
   - {fileID: 2379399937763128866}
   - {fileID: 1340909551}
   - {fileID: 1522142599}
@@ -3986,7 +3985,6 @@ GameObject:
   - component: {fileID: 1522142597}
   - component: {fileID: 1522142594}
   - component: {fileID: 1522142598}
-  - component: {fileID: 1522142593}
   - component: {fileID: 1522142599}
   m_Layer: 10
   m_Name: Player
@@ -3995,27 +3993,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1522142593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1522142592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe223226ea14a934ab1a0f3d0342f647, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _groundCheck: {fileID: 52778643}
-  _groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 8
-  _checkRadius: 0.2
-  _speed: 5
-  _jumpForce: 4
-  _stepDistance: 0
-  _stepsAudioSource: {fileID: 212611967}
 --- !u!136 &1522142594
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4097,13 +4074,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxHealthAmount: 100
-  _gameOver: {fileID: 1120188649}
-  _movement: {fileID: 1522142593}
   _soundPlayer: {fileID: 212611968}
-  _weaponModelChanger: {fileID: 989109756}
-  _shakeCameraOnWeaponAttack: {fileID: 1340909553}
+  _movement:
+    _groundCheck: {fileID: 52778643}
+    _groundLayerMask:
+      serializedVersion: 2
+      m_Bits: 64
+    _checkRadius: 0.2
+    _speed: 5
+    _jumpForce: 4
+    _stepDistance: 1
+    _stepsAudioSource: {fileID: 212611967}
+    _rigidbody: {fileID: 1522142598}
   _settings:
-    _damage: 10
     _layerMask:
       serializedVersion: 2
       m_Bits: 8
@@ -4115,6 +4098,7 @@ MonoBehaviour:
     _hitEffectDestroyDelay: 2
     _audioSource: {fileID: 2379399937763128856}
     _shotAudioClip: {fileID: 8300000, guid: 9e9480b4d07646942b555fd43f2a0f71, type: 3}
+    _shakeCameraOnWeaponAttack: {fileID: 1340909553}
 --- !u!1 &1527947222
 GameObject:
   m_ObjectHideFlags: 0
@@ -5522,6 +5506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe8939b1360d7041ac57810d87609d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 2379399937763128854}
 --- !u!111 &2379399937763128864
 Animation:
   m_ObjectHideFlags: 0
@@ -5550,6 +5535,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169db89d03182f3468d763b44d914d40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weaponAiming: {fileID: 2379399937763128862}
   _initialFieldOfView: 60
   _changedFieldOfView: 50
   _duration: 0.3

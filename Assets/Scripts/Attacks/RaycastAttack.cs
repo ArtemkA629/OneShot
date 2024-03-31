@@ -6,14 +6,12 @@ using UnityEngine;
 public class RaycastAttack : AttackBehaviour, IDisposable
 {
     private readonly RaycastAttackSettings _settings;
-    private readonly IWeaponAttackReaction _shakeCameraOnWeaponAttack;
-    private readonly ParticleSystem _muzzleEffect;
+    private readonly WeaponModel _weaponModel;
 
-    public RaycastAttack(RaycastAttackSettings settings, ParticleSystem effect, IWeaponAttackReaction reaction)
+    public RaycastAttack(int damage, RaycastAttackSettings settings, WeaponModel weaponModel) : base(damage)
     {
         _settings = settings;
-        _muzzleEffect = effect;
-        _shakeCameraOnWeaponAttack = reaction;
+        _weaponModel = weaponModel;
     }
 
     public override void PerformAttack(Transform transform)
@@ -23,7 +21,7 @@ public class RaycastAttack : AttackBehaviour, IDisposable
 
         PerformEffects();
 
-        _shakeCameraOnWeaponAttack.ReactOnAttack();
+        _settings.ShakeCameraOnWeaponAttack.ReactOnAttack();
     }
 
     private void PerformRaycast(Transform transform)
@@ -34,20 +32,19 @@ public class RaycastAttack : AttackBehaviour, IDisposable
         if (Physics.Raycast(ray, out RaycastHit hitInfo, _settings.Distance, _settings.LayerMask))
         {
             var hitCollider = hitInfo.collider;
-
             if (hitCollider.TryGetComponent(out Damageable damageable))
             {
-                damageable.ApplyDamage(_settings.Damage);
+                damageable.ApplyDamage(Damage);
                 SpawnParicleEffectsOnHit(hitInfo);
             }
         }
     }
 
-    private void PerformEffects()
+    private void PerformEffects() 
     {
-        if (_muzzleEffect != null)
-            _muzzleEffect.Play();
-
+        var muzzleEffect = _weaponModel.MuzzleEffect;
+        if (muzzleEffect != null)
+            muzzleEffect.Play();
         if (_settings.AudioSource != null)
             _settings.AudioSource.PlayOneShot(_settings.ShotAudioClip);
     }
@@ -67,8 +64,7 @@ public class RaycastAttack : AttackBehaviour, IDisposable
         {
             x = Random.Range(-spread, spread),
             y = Random.Range(-spread, spread),
-            z = Random.Range(-spread, spread
-            )
+            z = Random.Range(-spread, spread)
         };
     }
 }

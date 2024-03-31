@@ -225,10 +225,8 @@ MonoBehaviour:
   - {fileID: 3606891814960852582}
   - {fileID: 6387374011937854870}
   - {fileID: 333507307166162255}
-  _deathDelay: 4
   _animator: {fileID: 2290864146707809554}
   _settings:
-    _damage: 10
     _searchLayerMask:
       serializedVersion: 2
       m_Bits: 1024
@@ -241,6 +239,8 @@ MonoBehaviour:
     _boxSize: {x: 1, y: 1, z: 1}
     _sphereRadius: 0.7
     _considerObstacles: 1
+  _deathDelay: 4
+  _damage: 10
 --- !u!1 &530658089634647505
 GameObject:
   m_ObjectHideFlags: 0

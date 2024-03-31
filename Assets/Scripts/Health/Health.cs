@@ -2,18 +2,19 @@ using System;
 
 public class Health
 {
+    private readonly int _maxAmount;
+
     private int _amount;
-    private int _maxAmount;
-
-    public int Amount => _amount;
-
-    public event Action Changed;
 
     public Health(int maxAmount)
     {
         _amount = maxAmount;
         _maxAmount = maxAmount;
     }
+
+    public event Action Changed;
+
+    public int Amount => _amount;
 
     public void SetAmount(int amount)
     {
@@ -23,7 +24,7 @@ public class Health
         _amount = amount;
     }
 
-    public void AddAmount(int amountToAdd)
+    public void ApplyHeal(int amountToAdd)
     {
         int currentHealth = _amount + amountToAdd;
 
@@ -34,7 +35,7 @@ public class Health
         Changed?.Invoke();
     }
 
-    public void SubtractAmount(int amountToSubtract)
+    public void ApplyDamage(int amountToSubtract)
     {
         int currentHealth = _amount - amountToSubtract;
 

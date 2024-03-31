@@ -1,6 +1,8 @@
+using System;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+[Serializable]
+public class PlayerMovement
 {
     [Header("Check Grounded")]
     [SerializeField] private Transform _groundCheck;
@@ -15,14 +17,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource _stepsAudioSource;
 
-    private Rigidbody _rigidbody;
+    [SerializeField] private Rigidbody _rigidbody;
 
-    private void Awake()
-    {
-        _rigidbody = GetComponent<Rigidbody>();
-    }
-
-    public void Move(Vector2 moveDirection)
+    public void Move(Vector2 moveDirection, Transform transform)
     {
         if (moveDirection.sqrMagnitude < 0.1f)
             return;
