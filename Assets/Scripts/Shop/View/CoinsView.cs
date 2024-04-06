@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-public class CoinsView : ShopView
+public class CoinsView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _coinsText;
 

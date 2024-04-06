@@ -38,7 +38,7 @@ public class Enemy : Damageable, IAttackable
     protected override void OnDead()
     {
         AnimateDeath();
-        OffColliders();
+        SetColliders(false);
         AddCoin();
         Destroy();
     }
@@ -54,18 +54,18 @@ public class Enemy : Damageable, IAttackable
             return;
 
         Health.SetAmount(MaxHealthAmount);
-        foreach (var collider in _enemyColliders)
-            collider.enabled = true;
+        SetColliders(true);
     }
+
     private void AnimateDeath()
     {
         _animator.SetTrigger(EnemyAnimatorConstStrings.Dead);
     }
 
-    private void OffColliders()
+    private void SetColliders(bool isActive)
     {
         foreach (var collider in _enemyColliders)
-            collider.enabled = false;
+            collider.enabled = isActive;
     }
 
     private void AddCoin()

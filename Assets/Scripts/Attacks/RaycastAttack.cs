@@ -3,31 +3,33 @@ using System;
 using Random = UnityEngine.Random;
 using UnityEngine;
 
-public class RaycastAttack : AttackBehaviour, IDisposable
+public class RaycastAttack : AttackBehaviour
 {
     private readonly RaycastAttackSettings _settings;
     private readonly WeaponModel _weaponModel;
+    private readonly Transform _playerTransform;
 
-    public RaycastAttack(int damage, RaycastAttackSettings settings, WeaponModel weaponModel) : base(damage)
+    public RaycastAttack(int damage, RaycastAttackSettings settings, WeaponModel weaponModel, Transform playerTransform) : base(damage)
     {
         _settings = settings;
         _weaponModel = weaponModel;
+        _playerTransform = playerTransform;
     }
 
-    public override void PerformAttack(Transform transform)
+    public override void PerformAttack()
     {
         for (var i = 0; i < _settings.ShotCount; i++)
-	        PerformRaycast(transform);
+	        PerformRaycast();
 
         PerformEffects();
 
         _settings.ShakeCameraOnWeaponAttack.ReactOnAttack();
     }
 
-    private void PerformRaycast(Transform transform)
+    private void PerformRaycast()
     {
-        var direction = _settings.UseSpread ? transform.forward + CalculateSpread() : transform.forward;
-        var ray = new Ray(transform.position, direction);
+        var direction = _settings.UseSpread ? _playerTransform.forward + CalculateSpread() : _playerTransform.forward;
+        var ray = new Ray(_playerTransform.position, direction);
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, _settings.Distance, _settings.LayerMask))
         {

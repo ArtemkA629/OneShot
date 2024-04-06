@@ -2,14 +2,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class WeaponCardsView : ShopView
+public class WeaponCardsView : MonoBehaviour
 {
     [SerializeField] private Image _weaponImage;
     [SerializeField] private TextMeshProUGUI _cardText;
 
     private ShopPresenter _presenter;
 
-    public override void Init(ShopPresenter shopPresenter)
+    public void Init(ShopPresenter shopPresenter)
     {
         _presenter = shopPresenter;
     }

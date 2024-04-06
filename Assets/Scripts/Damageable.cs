@@ -15,7 +15,6 @@ public abstract class Damageable : MonoBehaviour
     protected virtual void Awake()
     {
         _health = new Health(_maxHealthAmount);
-        Debug.Log(_maxHealthAmount);
     }
 
     protected virtual void OnEnable()

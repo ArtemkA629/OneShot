@@ -7,16 +7,11 @@ public class AddingCoinView : MonoBehaviour, IDespawnable
 {
     [SerializeField] private float _crossFadeAlphaDuration;
     [SerializeField] private float _positionLerpSpeed;
+    [SerializeField] private Image _coinImage;
 
-    private Image _coinImage;
     private Vector3 _finalPosition;
 
     [Inject] private readonly Camera _playerCamera;
-
-    private void Start()
-    {
-        _coinImage = GetComponent<Image>();
-    }
 
     public void Init(Vector3 enemyPosition)
     {

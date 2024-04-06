@@ -1,9 +1,9 @@
-public class ScrollButtonsModel : ShopModel
+public class ScrollButtonsModel
 {
     private readonly SaveData _data;
     private readonly ScrollButtonsView _view;
 
-    public ScrollButtonsModel(SaveData data, ScrollButtonsView view)
+    public ScrollButtonsModel(ScrollButtonsView view, SaveData data)
     {
         _data = data;
         _view = view;
@@ -17,7 +17,7 @@ public class ScrollButtonsModel : ShopModel
             _data.CurrentWeaponIndex--;
     }
 
-    public override void Scroll(WeaponCard[] weaponCards)
+    public void Scroll(WeaponCard[] weaponCards)
     {
         int currentWeaponIndex = _data.CurrentWeaponIndex;
         _view.DisplayActiveButtons(currentWeaponIndex, weaponCards.Length - 1);

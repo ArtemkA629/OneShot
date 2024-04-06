@@ -1,5 +1,4 @@
 using System;
-using UnityEngine;
 
 public class Coins
 {
@@ -7,15 +6,14 @@ public class Coins
 
     public event Action Changed;
 
-    public int Amount
-    {
-        get => _amount;
-        private set => _amount = Mathf.Clamp(value, 0, int.MaxValue);
-    }
+    public int Amount => _amount;
 
     public void SetAmount(int amount)
     {
-        Amount = amount;
+        if (amount < 0)
+            throw new Exception("Invalid coinsAmount");
+
+        _amount = amount;
         Changed?.Invoke();
     }
 }

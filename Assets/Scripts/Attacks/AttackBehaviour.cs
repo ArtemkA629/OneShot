@@ -1,7 +1,4 @@
-using System;
-using UnityEngine;
-
-public abstract class AttackBehaviour : IDisposable
+public abstract class AttackBehaviour
 {
     private readonly int _damage;
 
@@ -12,7 +9,5 @@ public abstract class AttackBehaviour : IDisposable
         _damage = damage;
     }
 
-    public virtual void PerformAttack() { }
-    public virtual void PerformAttack(Transform transform) { }
-    public virtual void Dispose() { }
+    public abstract void PerformAttack();
 }

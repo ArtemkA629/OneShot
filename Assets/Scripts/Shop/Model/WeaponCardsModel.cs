@@ -1,6 +1,6 @@
 using System;
 
-public class WeaponCardsModel : ShopModel, IDisposable
+public class WeaponCardsModel : IDisposable
 {
     private readonly WeaponCardsView _view;
     private readonly SaveData _data;
@@ -10,7 +10,7 @@ public class WeaponCardsModel : ShopModel, IDisposable
     public WeaponCard[] WeaponCards => _weaponCards;
     public SaveData Data => _data;
 
-    public WeaponCardsModel(SaveData data, WeaponCardsView view, WeaponItem[] weaponItems)
+    public WeaponCardsModel(WeaponCardsView view, SaveData data, WeaponItem[] weaponItems)
     {
         WeaponCard.Unchanged += OnWeaponCardUnchanged;
         _data = data;
@@ -30,14 +30,13 @@ public class WeaponCardsModel : ShopModel, IDisposable
         _weaponCards[_data.CurrentWeaponIndex].ChangeState(coinsAmount);
     }
 
-    public override void DeleteSavedData(WeaponItem[] weaponItems)
+    public void Reset()
     {
-        _data.ResetIndexes();
         for (int i = 0; i < _weaponCards.Length; i++)
-            _weaponCards[i].SetCurrentText(weaponItems[i].CardTextAtStart);
+            _weaponCards[i].SetCurrentText(_weaponCards[i].CardTextAtStart);
     }
 
-    public override void Scroll(WeaponCard[] weaponCards)
+    public void Scroll(WeaponCard[] weaponCards)
     {
         int currentWeaponIndex = _data.CurrentWeaponIndex;
         _view.DisplayWeaponCard(weaponCards[currentWeaponIndex]);

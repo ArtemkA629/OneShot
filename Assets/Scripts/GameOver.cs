@@ -23,7 +23,6 @@ public class GameOver : MonoBehaviour
     {
         Time.timeScale = 0;
         _gameOverPanel.SetActive(true);
-
         foreach (var script in _inputScripts)
             script.enabled = false;
 

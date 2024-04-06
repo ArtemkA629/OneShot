@@ -39,18 +39,17 @@ public class Player : Damageable, IAttackable
     {
         base.OnDisable();
         _playerInput.Disable();
-        _attack.Dispose();
-    }
-
-    public void Attack()
-    {
-        _attack.PerformAttack(transform);
     }
 
     public void SetModel(WeaponModel weaponModel)
     {
         _weaponModel = weaponModel;
         SetAttack();
+    }
+
+    public void Attack()
+    {
+        _attack.PerformAttack();
     }
 
     protected override void OnDead()
@@ -61,6 +60,6 @@ public class Player : Damageable, IAttackable
     private void SetAttack()
     {
         var damage = _weaponModel.Damage;
-        _attack = new RaycastAttack(damage, _settings, _weaponModel);
+        _attack = new RaycastAttack(damage, _settings, _weaponModel, transform);
     }
 }

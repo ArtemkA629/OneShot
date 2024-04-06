@@ -5,6 +5,7 @@ public class WeaponCard
 {
     private readonly Sprite _sprite;
     private readonly WeaponModel _model;
+    private readonly string _cardTextAtStart;
 
     private string _cardText;
 
@@ -13,13 +14,14 @@ public class WeaponCard
 
     public Sprite Sprite => _sprite;
     public WeaponModel Model => _model;
+    public string CardTextAtStart => _cardTextAtStart;
     public string CardText => _cardText;
 
     public WeaponCard(WeaponItem weaponItem)
     {
         _sprite = weaponItem.Sprite;
         _model = weaponItem.Model;
-        _cardText = weaponItem.CardTextAtStart;
+        _cardTextAtStart = _cardText = weaponItem.CardTextAtStart;
     }
 
     public void SetCurrentText(string cardText)
@@ -78,7 +80,7 @@ public class WeaponCard
     private bool CardTextIsAcceptable(string cardText)
     {
         foreach (var item in UIConstantStrings.CardTextVariants)
-            if (cardText.Equals(item))
+            if (cardText == item)
                 return true;
         return int.TryParse(cardText, out _);
     }

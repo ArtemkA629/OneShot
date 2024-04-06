@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-public class ScrollButtonsView : ShopView
+public class ScrollButtonsView : MonoBehaviour
 {
-    [SerializeField] private ScrollButton _leftButton;
-    [SerializeField] private ScrollButton _rightButton;
+    [SerializeField] private CustomButton<ScrollButtonType> _leftButton;
+    [SerializeField] private CustomButton<ScrollButtonType> _rightButton;
 
     private ShopPresenter _presenter;
 
@@ -20,7 +20,7 @@ public class ScrollButtonsView : ShopView
         _leftButton.Clicked -= OnScrollButtonClicked;
     }
 
-    public override void Init(ShopPresenter presenter)
+    public void Init(ShopPresenter presenter)
     {
         _presenter = presenter;
     }
@@ -28,7 +28,7 @@ public class ScrollButtonsView : ShopView
     public void DisplayActiveButtons(int currentWeaponIndex, int lastIndex)
     {
         if (currentWeaponIndex > lastIndex)
-            throw new IndexOutOfRangeException("WeaponIndex can't be more than last one.");
+            throw new IndexOutOfRangeException("Invalid weaponIndex.");
 
         if (currentWeaponIndex == 0)
             ApplyButtonsDisplay(false, true);

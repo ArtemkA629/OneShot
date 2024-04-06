@@ -14,13 +14,13 @@ public class Shop : MonoBehaviour
 
     private void OnEnable()
     {
-        _dataDeletion.ButtonClicked += OnDataDeleted;
+        _dataDeletion.ButtonClicked += OnDataDeletion;
         Init();
     }
 
     private void OnDisable()
     {
-        _dataDeletion.ButtonClicked -= OnDataDeleted;
+        _dataDeletion.ButtonClicked -= OnDataDeletion;
         _presenter.Dispose();
         _saveSystem.Save(_saveData);
     }
@@ -29,15 +29,15 @@ public class Shop : MonoBehaviour
     {
         _saveSystem = new SaveSystem(_weaponItems.Length);
         _saveData = _saveSystem.Load();
-        var weaponCardsModel = new WeaponCardsModel(_saveData, _weaponCardsView, _weaponItems);
-        var coinsModel = new CoinsModel(_saveData, _coinsView);
-        var scrollButtonsModel = new ScrollButtonsModel(_saveData, _buttonsView);
+        var weaponCardsModel = new WeaponCardsModel(_weaponCardsView, _saveData, _weaponItems);
+        var coinsModel = new CoinsModel(_coinsView, _saveData);
+        var scrollButtonsModel = new ScrollButtonsModel(_buttonsView, _saveData);
         _presenter = new ShopPresenter(weaponCardsModel, coinsModel, scrollButtonsModel);
         _weaponCardsView.Init(_presenter);
         _buttonsView.Init(_presenter);
     }
 
-    private void OnDataDeleted()
+    private void OnDataDeletion()
     {
         _presenter.OnDeleteSavedData(_weaponItems);
     }

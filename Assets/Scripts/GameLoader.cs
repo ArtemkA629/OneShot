@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class GameLoader : MonoBehaviour
 {
-    [SerializeField] private LevelButton[] _buttons;
+    [SerializeField] private CustomButton<LevelDifficulty>[] _buttons;
 
     public static event Action<LevelDifficulty> LevelChosen;
 

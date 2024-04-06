@@ -7,7 +7,7 @@ public class ShakeCameraOnWeaponAttack : MonoBehaviour, IWeaponAttackReaction
 
     private void Start()
     {
-        _cameraTransform = GetComponent<Transform>();
+        _cameraTransform = transform;
     }
 
     public void ReactOnAttack()

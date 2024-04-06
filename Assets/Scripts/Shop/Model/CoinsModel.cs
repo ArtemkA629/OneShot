@@ -1,6 +1,6 @@
 using System;
 
-public class CoinsModel : ShopModel, IDisposable
+public class CoinsModel : IDisposable
 {
     private readonly CoinsView _view;
     private readonly SaveData _data;
@@ -8,7 +8,7 @@ public class CoinsModel : ShopModel, IDisposable
 
     public Coins Coins => _coins;
 
-    public CoinsModel(SaveData data, CoinsView view)
+    public CoinsModel(CoinsView view, SaveData data)
     {
         WeaponCard.Bought += OnWeaponBought;
         _coins.Changed += OnCoinsAmountChanged;
@@ -23,7 +23,7 @@ public class CoinsModel : ShopModel, IDisposable
         _coins.Changed -= OnCoinsAmountChanged;
     }
 
-    public override void DeleteSavedData()
+    public void Reset()
     {
         _coins.SetAmount(0);
     }

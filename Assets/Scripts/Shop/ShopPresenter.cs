@@ -11,9 +11,7 @@ public class ShopPresenter : IDisposable
         _weaponCardsModel = weaponCardsModel;
         _coinsModel = coinsModel;
         _scrollButtonsModel = scrollButtonsModel;
-
-        scrollButtonsModel.Scroll(_weaponCardsModel.WeaponCards);
-        GlobalDataHolder.UpdateGlobalData(weaponCardsModel.WeaponCards[weaponCardsModel.Data.ChosenWeaponIndex].Model);
+        OnInit();
     }
     
     public void Dispose()
@@ -36,7 +34,13 @@ public class ShopPresenter : IDisposable
 
     public void OnDeleteSavedData(WeaponItem[] weaponItems)
     {
-        _weaponCardsModel.DeleteSavedData(weaponItems);
-        _coinsModel.DeleteSavedData();
+        _weaponCardsModel.Reset();
+        _coinsModel.Reset();
+    }
+
+    private void OnInit()
+    {
+        _scrollButtonsModel.Scroll(_weaponCardsModel.WeaponCards);
+        GlobalDataHolder.UpdateGlobalData(_weaponCardsModel.WeaponCards[_weaponCardsModel.Data.ChosenWeaponIndex].Model);
     }
 }
