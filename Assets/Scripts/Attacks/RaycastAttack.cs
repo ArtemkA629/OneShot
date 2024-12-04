@@ -1,7 +1,6 @@
-using NTC.Pool;
-using System;
 using Random = UnityEngine.Random;
 using UnityEngine;
+using NTC.Pool;
 
 public class RaycastAttack : AttackBehaviour
 {

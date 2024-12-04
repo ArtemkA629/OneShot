@@ -1,0 +1,117 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Program Files\\GitHub\\OneShot-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\GitHub\\OneShot-main\\Packages\\manifest.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Packages\\manifest.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\GitHub\\OneShot-main\\Packages\\packages-lock.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Packages\\packages-lock.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EB8B04A-B75E-6B72-75A3-E0868B091BFF}|Scripts.csproj|C:\\Program Files\\GitHub\\OneShot-main\\assets\\scripts\\attacks\\raycastattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EB8B04A-B75E-6B72-75A3-E0868B091BFF}|Scripts.csproj|solutionrelative:assets\\scripts\\attacks\\raycastattack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EB8B04A-B75E-6B72-75A3-E0868B091BFF}|Scripts.csproj|C:\\Program Files\\GitHub\\OneShot-main\\assets\\scripts\\coin\\addingcoinview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EB8B04A-B75E-6B72-75A3-E0868B091BFF}|Scripts.csproj|solutionrelative:assets\\scripts\\coin\\addingcoinview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0EB8B04A-B75E-6B72-75A3-E0868B091BFF}|Scripts.csproj|C:\\Program Files\\GitHub\\OneShot-main\\assets\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0EB8B04A-B75E-6B72-75A3-E0868B091BFF}|Scripts.csproj|solutionrelative:assets\\scripts\\player\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\GitHub\\OneShot-main\\Assets\\Scripts\\Attacks\\RaycastDeviatedAttack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\Attacks\\RaycastDeviatedAttack.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "manifest.json",
+              "DocumentMoniker": "C:\\Program Files\\GitHub\\OneShot-main\\Packages\\manifest.json",
+              "RelativeDocumentMoniker": "Packages\\manifest.json",
+              "ToolTip": "C:\\Program Files\\GitHub\\OneShot-main\\Packages\\manifest.json",
+              "RelativeToolTip": "Packages\\manifest.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-04T13:10:41.001Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "packages-lock.json",
+              "DocumentMoniker": "C:\\Program Files\\GitHub\\OneShot-main\\Packages\\packages-lock.json",
+              "RelativeDocumentMoniker": "Packages\\packages-lock.json",
+              "ToolTip": "C:\\Program Files\\GitHub\\OneShot-main\\Packages\\packages-lock.json",
+              "RelativeToolTip": "Packages\\packages-lock.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-12-04T13:07:51.98Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AddingCoinView.cs",
+              "DocumentMoniker": "C:\\Program Files\\GitHub\\OneShot-main\\Assets\\Scripts\\Coin\\AddingCoinView.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Coin\\AddingCoinView.cs",
+              "ToolTip": "C:\\Program Files\\GitHub\\OneShot-main\\Assets\\Scripts\\Coin\\AddingCoinView.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Coin\\AddingCoinView.cs",
+              "ViewState": "AQIAABAAAAAAAAAAAAAgwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-04T12:57:43.281Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RaycastDeviatedAttack.cs",
+              "DocumentMoniker": "C:\\Program Files\\GitHub\\OneShot-main\\Assets\\Scripts\\Attacks\\RaycastDeviatedAttack.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Attacks\\RaycastDeviatedAttack.cs",
+              "ToolTip": "C:\\Program Files\\GitHub\\OneShot-main\\Assets\\Scripts\\Attacks\\RaycastDeviatedAttack.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Attacks\\RaycastDeviatedAttack.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T20:29:48.702Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RaycastAttack.cs",
+              "DocumentMoniker": "C:\\Program Files\\GitHub\\OneShot-main\\Assets\\Scripts\\Attacks\\RaycastAttack.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Attacks\\RaycastAttack.cs",
+              "ToolTip": "C:\\Program Files\\GitHub\\OneShot-main\\Assets\\Scripts\\Attacks\\RaycastAttack.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Attacks\\RaycastAttack.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T20:18:04.647Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Program Files\\GitHub\\OneShot-main\\Assets\\Scripts\\Player\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player\\Player.cs",
+              "ToolTip": "C:\\Program Files\\GitHub\\OneShot-main\\Assets\\Scripts\\Player\\Player.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player\\Player.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-01T20:11:58.587Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
