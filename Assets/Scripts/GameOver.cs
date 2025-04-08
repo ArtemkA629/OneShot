@@ -32,6 +32,7 @@ public class GameOver : MonoBehaviour
 
     public void ExitGameOverPanel(int sceneIndex)
     {
+        YGAdsProvider.TryShowFullScreenAdWithChance();
         SceneManager.LoadScene(sceneIndex);
         Time.timeScale = 1;
     }

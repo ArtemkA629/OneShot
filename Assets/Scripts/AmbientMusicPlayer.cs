@@ -8,4 +8,12 @@ public class AmbientMusicPlayer : MonoBehaviour
     {
         _music.Play();
     }
+
+    private void OnApplicationFocus(bool focus)
+    {
+        if (!focus)
+            _music.Pause();
+        else
+            _music.UnPause();
+    }
 }

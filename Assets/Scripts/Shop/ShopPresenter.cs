@@ -6,11 +6,18 @@ public class ShopPresenter : IDisposable
     private readonly CoinsModel _coinsModel;
     private readonly ScrollButtonsModel _scrollButtonsModel;
 
+    public event Action CoinsAmountChanged;
+    public event Action WeaponCardChanged;
+
     public ShopPresenter(WeaponCardsModel weaponCardsModel, CoinsModel coinsModel, ScrollButtonsModel scrollButtonsModel)
     {
         _weaponCardsModel = weaponCardsModel;
         _coinsModel = coinsModel;
         _scrollButtonsModel = scrollButtonsModel;
+
+        _coinsModel.CoinsAmountChanged += OnCoinsAmountChanged;
+        _weaponCardsModel.WeaponCardChanged += OnWeaponCardChanged;
+
         OnInit();
     }
     
@@ -42,5 +49,16 @@ public class ShopPresenter : IDisposable
     {
         _scrollButtonsModel.Scroll(_weaponCardsModel.WeaponCards);
         GlobalDataHolder.UpdateGlobalData(_weaponCardsModel.WeaponCards[_weaponCardsModel.Data.ChosenWeaponIndex].Model);
+        UnityEngine.Debug.Log(_weaponCardsModel.Data.ChosenWeaponIndex);
+    }
+
+    private void OnCoinsAmountChanged()
+    {
+        CoinsAmountChanged?.Invoke();
+    }
+
+    private void OnWeaponCardChanged()
+    {
+        WeaponCardChanged?.Invoke();
     }
 }

@@ -1,0 +1,16 @@
+{
+    "idSave": 1,
+    "isFirstSession": true,
+    "language": "ru",
+    "promptDone": false,
+    "CurrentWeaponIndex": 0,
+    "ChosenWeaponIndex": 0,
+    "CoinsAmount": 18,
+    "WeaponCardTexts": [
+        "Выбрано",
+        "100",
+        "250",
+        "500",
+        "1000"
+    ]
+}

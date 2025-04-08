@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    private readonly float[] _spawnDelays = { 5f, 3f, 1f };
+    private readonly float[] _spawnDelays = { 1f, 0.5f, 0.25f };
 
     [SerializeField] private Enemy _enemy;
     [SerializeField] private float _spawnRange;

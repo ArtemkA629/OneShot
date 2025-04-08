@@ -7,6 +7,8 @@ public class WeaponCardsModel : IDisposable
 
     private WeaponCard[] _weaponCards;
 
+    public event Action WeaponCardChanged;
+
     public WeaponCard[] WeaponCards => _weaponCards;
     public SaveData Data => _data;
 
@@ -60,5 +62,6 @@ public class WeaponCardsModel : IDisposable
         _view.DisplayWeaponCardText(_weaponCards[_data.CurrentWeaponIndex].CardText);
         _weaponCards[_data.ChosenWeaponIndex].Unchange();
         _data.ChosenWeaponIndex = _data.CurrentWeaponIndex;
+        WeaponCardChanged?.Invoke();
     }
 }

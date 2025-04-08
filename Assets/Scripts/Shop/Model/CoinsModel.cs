@@ -6,6 +6,8 @@ public class CoinsModel : IDisposable
     private readonly SaveData _data;
     private readonly Coins _coins = new();
 
+    public event Action CoinsAmountChanged;
+
     public Coins Coins => _coins;
 
     public CoinsModel(CoinsView view, SaveData data)
@@ -37,5 +39,6 @@ public class CoinsModel : IDisposable
     {
         _view.DisplayCoinsAmount(_coins.Amount.ToString());
         _data.CoinsAmount = _coins.Amount;
+        CoinsAmountChanged?.Invoke();
     }
 }

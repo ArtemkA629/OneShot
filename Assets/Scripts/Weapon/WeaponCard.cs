@@ -37,7 +37,7 @@ public class WeaponCard
             int coinsToSubtract = int.Parse(_cardText);
 
             if (Chosen())
-                throw new Exception("Weaponcard can't be locked and chosen!");
+                throw new Exception("Weapon card can't be locked and chosen!");
             else if (moneyCount >= coinsToSubtract)
             {
                 ApplyChange("Выбрано");
@@ -53,7 +53,7 @@ public class WeaponCard
     public void Unchange()
     {
         if (Locked())
-            throw new Exception("Weaponcard can't be locked!");
+            throw new Exception("Weapon сard can't be locked!");
 
         else if (Chosen())
             ApplyChange("Не выбрано");

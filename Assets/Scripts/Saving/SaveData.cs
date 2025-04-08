@@ -1,11 +1,24 @@
 using System;
+using System.Linq;
 using UnityEngine;
+using YG;
 
 public class SaveData
 {
     private int _currentWeaponIndex;
     private int _chosenWeaponIndex;
     private int _coinsAmount;
+    private string[] _weaponCardTexts;
+
+    public SaveData() { }
+
+    public SaveData(SavesYG savesYG)
+    {
+        WeaponCardTexts = savesYG.WeaponCardTexts;
+        CurrentWeaponIndex = savesYG.CurrentWeaponIndex;
+        ChosenWeaponIndex = savesYG.ChosenWeaponIndex;
+        CoinsAmount = savesYG.CoinsAmount;
+    }
 
     public int CurrentWeaponIndex
     {
@@ -25,7 +38,20 @@ public class SaveData
         set { _coinsAmount = Mathf.Clamp(value, 0, int.MaxValue); }
     }
 
-    public string[] WeaponCardTexts;
+    public string[] WeaponCardTexts
+    {
+        get { return _weaponCardTexts; }
+        set
+        {
+            foreach(var text in value)
+            {
+                if (!UIConstantStrings.CardTextVariants.Contains(text) && !int.TryParse(text, out int res) && text != null && text != "")
+                    throw new Exception("Invalid weaponCardTexts array");
+            }
+
+            _weaponCardTexts = value;
+        }
+    }
 
     public void SetWeaponCardTexts(WeaponCard[] _weaponCards)
     {
